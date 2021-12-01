@@ -1,6 +1,6 @@
 # Tiur
-A simple programming language made using python PLY for the final project of CIIC4030
-
+A simple programming language made using python PLY for the final project of CIIC4030.
+Made by Jael Gonzalez
 ## Usage
 
 To run a tiur script:
