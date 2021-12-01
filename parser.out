@@ -11,37 +11,39 @@ Rule 1     statement -> RECEIVE LPAREN DATA RPAREN
 Rule 2     statement -> SHOW LPAREN DATA RPAREN
 Rule 3     statement -> SHOW LPAREN NAME RPAREN
 Rule 4     DATA -> INT
-Rule 5     DATA -> STRING
-Rule 6     DATA -> list
-Rule 7     DATA -> statement
-Rule 8     term -> DATA
-Rule 9     term -> DATA COMMA term
-Rule 10    list -> LBRACKET term RBRACKET
-Rule 11    statement -> NAME IS DATA
-Rule 12    statement -> NAME
+Rule 5     DATA -> DOUBLE
+Rule 6     DATA -> STRING
+Rule 7     DATA -> list
+Rule 8     DATA -> statement
+Rule 9     term -> DATA
+Rule 10    term -> DATA COMMA term
+Rule 11    list -> LBRACKET term RBRACKET
+Rule 12    statement -> NAME IS DATA
+Rule 13    statement -> NAME
 
 Terminals, with rules where they appear
 
-COMMA                : 9
+COMMA                : 10
+DOUBLE               : 5
 INT                  : 4
-IS                   : 11
-LBRACKET             : 10
+IS                   : 12
+LBRACKET             : 11
 LIST                 : 
 LPAREN               : 1 2 3
-NAME                 : 3 11 12
-RBRACKET             : 10
+NAME                 : 3 12 13
+RBRACKET             : 11
 RECEIVE              : 1
 RPAREN               : 1 2 3
 SHOW                 : 2 3
-STRING               : 5
+STRING               : 6
 error                : 
 
 Nonterminals, with rules where they appear
 
-DATA                 : 1 2 8 9 11
-list                 : 6
-statement            : 7 0
-term                 : 9 10
+DATA                 : 1 2 9 10 12
+list                 : 7
+statement            : 8 0
+term                 : 10 11
 
 Parsing method: LALR
 
@@ -51,8 +53,8 @@ state 0
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
@@ -83,97 +85,103 @@ state 3
 
 state 4
 
-    (11) statement -> NAME . IS DATA
-    (12) statement -> NAME .
+    (12) statement -> NAME . IS DATA
+    (13) statement -> NAME .
 
     IS              shift and go to state 7
-    $end            reduce using rule 12 (statement -> NAME .)
-    RPAREN          reduce using rule 12 (statement -> NAME .)
-    COMMA           reduce using rule 12 (statement -> NAME .)
-    RBRACKET        reduce using rule 12 (statement -> NAME .)
+    $end            reduce using rule 13 (statement -> NAME .)
+    RPAREN          reduce using rule 13 (statement -> NAME .)
+    COMMA           reduce using rule 13 (statement -> NAME .)
+    RBRACKET        reduce using rule 13 (statement -> NAME .)
 
 
 state 5
 
     (1) statement -> RECEIVE LPAREN . DATA RPAREN
     (4) DATA -> . INT
-    (5) DATA -> . STRING
-    (6) DATA -> . list
-    (7) DATA -> . statement
-    (10) list -> . LBRACKET term RBRACKET
+    (5) DATA -> . DOUBLE
+    (6) DATA -> . STRING
+    (7) DATA -> . list
+    (8) DATA -> . statement
+    (11) list -> . LBRACKET term RBRACKET
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
     INT             shift and go to state 9
-    STRING          shift and go to state 10
-    LBRACKET        shift and go to state 13
+    DOUBLE          shift and go to state 10
+    STRING          shift and go to state 11
+    LBRACKET        shift and go to state 14
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
     NAME            shift and go to state 4
 
     DATA                           shift and go to state 8
-    list                           shift and go to state 11
-    statement                      shift and go to state 12
+    list                           shift and go to state 12
+    statement                      shift and go to state 13
 
 state 6
 
     (2) statement -> SHOW LPAREN . DATA RPAREN
     (3) statement -> SHOW LPAREN . NAME RPAREN
     (4) DATA -> . INT
-    (5) DATA -> . STRING
-    (6) DATA -> . list
-    (7) DATA -> . statement
-    (10) list -> . LBRACKET term RBRACKET
+    (5) DATA -> . DOUBLE
+    (6) DATA -> . STRING
+    (7) DATA -> . list
+    (8) DATA -> . statement
+    (11) list -> . LBRACKET term RBRACKET
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
-    NAME            shift and go to state 15
+    NAME            shift and go to state 16
     INT             shift and go to state 9
-    STRING          shift and go to state 10
-    LBRACKET        shift and go to state 13
+    DOUBLE          shift and go to state 10
+    STRING          shift and go to state 11
+    LBRACKET        shift and go to state 14
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
 
-    DATA                           shift and go to state 14
-    list                           shift and go to state 11
-    statement                      shift and go to state 12
+    DATA                           shift and go to state 15
+    list                           shift and go to state 12
+    statement                      shift and go to state 13
 
 state 7
 
-    (11) statement -> NAME IS . DATA
+    (12) statement -> NAME IS . DATA
     (4) DATA -> . INT
-    (5) DATA -> . STRING
-    (6) DATA -> . list
-    (7) DATA -> . statement
-    (10) list -> . LBRACKET term RBRACKET
+    (5) DATA -> . DOUBLE
+    (6) DATA -> . STRING
+    (7) DATA -> . list
+    (8) DATA -> . statement
+    (11) list -> . LBRACKET term RBRACKET
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
     INT             shift and go to state 9
-    STRING          shift and go to state 10
-    LBRACKET        shift and go to state 13
+    DOUBLE          shift and go to state 10
+    STRING          shift and go to state 11
+    LBRACKET        shift and go to state 14
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
     NAME            shift and go to state 4
 
-    DATA                           shift and go to state 16
-    list                           shift and go to state 11
-    statement                      shift and go to state 12
+    DATA                           shift and go to state 17
+    list                           shift and go to state 12
+    statement                      shift and go to state 13
 
 state 8
 
     (1) statement -> RECEIVE LPAREN DATA . RPAREN
 
-    RPAREN          shift and go to state 17
+    RPAREN          shift and go to state 18
 
 
 state 9
@@ -188,93 +196,105 @@ state 9
 
 state 10
 
-    (5) DATA -> STRING .
+    (5) DATA -> DOUBLE .
 
-    RPAREN          reduce using rule 5 (DATA -> STRING .)
-    $end            reduce using rule 5 (DATA -> STRING .)
-    COMMA           reduce using rule 5 (DATA -> STRING .)
-    RBRACKET        reduce using rule 5 (DATA -> STRING .)
+    RPAREN          reduce using rule 5 (DATA -> DOUBLE .)
+    $end            reduce using rule 5 (DATA -> DOUBLE .)
+    COMMA           reduce using rule 5 (DATA -> DOUBLE .)
+    RBRACKET        reduce using rule 5 (DATA -> DOUBLE .)
 
 
 state 11
 
-    (6) DATA -> list .
+    (6) DATA -> STRING .
 
-    RPAREN          reduce using rule 6 (DATA -> list .)
-    $end            reduce using rule 6 (DATA -> list .)
-    COMMA           reduce using rule 6 (DATA -> list .)
-    RBRACKET        reduce using rule 6 (DATA -> list .)
+    RPAREN          reduce using rule 6 (DATA -> STRING .)
+    $end            reduce using rule 6 (DATA -> STRING .)
+    COMMA           reduce using rule 6 (DATA -> STRING .)
+    RBRACKET        reduce using rule 6 (DATA -> STRING .)
 
 
 state 12
 
-    (7) DATA -> statement .
+    (7) DATA -> list .
 
-    RPAREN          reduce using rule 7 (DATA -> statement .)
-    $end            reduce using rule 7 (DATA -> statement .)
-    COMMA           reduce using rule 7 (DATA -> statement .)
-    RBRACKET        reduce using rule 7 (DATA -> statement .)
+    RPAREN          reduce using rule 7 (DATA -> list .)
+    $end            reduce using rule 7 (DATA -> list .)
+    COMMA           reduce using rule 7 (DATA -> list .)
+    RBRACKET        reduce using rule 7 (DATA -> list .)
 
 
 state 13
 
-    (10) list -> LBRACKET . term RBRACKET
-    (8) term -> . DATA
-    (9) term -> . DATA COMMA term
+    (8) DATA -> statement .
+
+    RPAREN          reduce using rule 8 (DATA -> statement .)
+    $end            reduce using rule 8 (DATA -> statement .)
+    COMMA           reduce using rule 8 (DATA -> statement .)
+    RBRACKET        reduce using rule 8 (DATA -> statement .)
+
+
+state 14
+
+    (11) list -> LBRACKET . term RBRACKET
+    (9) term -> . DATA
+    (10) term -> . DATA COMMA term
     (4) DATA -> . INT
-    (5) DATA -> . STRING
-    (6) DATA -> . list
-    (7) DATA -> . statement
-    (10) list -> . LBRACKET term RBRACKET
+    (5) DATA -> . DOUBLE
+    (6) DATA -> . STRING
+    (7) DATA -> . list
+    (8) DATA -> . statement
+    (11) list -> . LBRACKET term RBRACKET
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
     INT             shift and go to state 9
-    STRING          shift and go to state 10
-    LBRACKET        shift and go to state 13
+    DOUBLE          shift and go to state 10
+    STRING          shift and go to state 11
+    LBRACKET        shift and go to state 14
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
     NAME            shift and go to state 4
 
-    term                           shift and go to state 18
-    DATA                           shift and go to state 19
-    list                           shift and go to state 11
-    statement                      shift and go to state 12
-
-state 14
-
-    (2) statement -> SHOW LPAREN DATA . RPAREN
-
-    RPAREN          shift and go to state 20
-
+    term                           shift and go to state 19
+    DATA                           shift and go to state 20
+    list                           shift and go to state 12
+    statement                      shift and go to state 13
 
 state 15
 
-    (3) statement -> SHOW LPAREN NAME . RPAREN
-    (11) statement -> NAME . IS DATA
-    (12) statement -> NAME .
+    (2) statement -> SHOW LPAREN DATA . RPAREN
 
-  ! shift/reduce conflict for RPAREN resolved as shift
     RPAREN          shift and go to state 21
-    IS              shift and go to state 7
-
-  ! RPAREN          [ reduce using rule 12 (statement -> NAME .) ]
 
 
 state 16
 
-    (11) statement -> NAME IS DATA .
+    (3) statement -> SHOW LPAREN NAME . RPAREN
+    (12) statement -> NAME . IS DATA
+    (13) statement -> NAME .
 
-    $end            reduce using rule 11 (statement -> NAME IS DATA .)
-    RPAREN          reduce using rule 11 (statement -> NAME IS DATA .)
-    COMMA           reduce using rule 11 (statement -> NAME IS DATA .)
-    RBRACKET        reduce using rule 11 (statement -> NAME IS DATA .)
+  ! shift/reduce conflict for RPAREN resolved as shift
+    RPAREN          shift and go to state 22
+    IS              shift and go to state 7
+
+  ! RPAREN          [ reduce using rule 13 (statement -> NAME .) ]
 
 
 state 17
+
+    (12) statement -> NAME IS DATA .
+
+    $end            reduce using rule 12 (statement -> NAME IS DATA .)
+    RPAREN          reduce using rule 12 (statement -> NAME IS DATA .)
+    COMMA           reduce using rule 12 (statement -> NAME IS DATA .)
+    RBRACKET        reduce using rule 12 (statement -> NAME IS DATA .)
+
+
+state 18
 
     (1) statement -> RECEIVE LPAREN DATA RPAREN .
 
@@ -284,23 +304,23 @@ state 17
     RBRACKET        reduce using rule 1 (statement -> RECEIVE LPAREN DATA RPAREN .)
 
 
-state 18
-
-    (10) list -> LBRACKET term . RBRACKET
-
-    RBRACKET        shift and go to state 22
-
-
 state 19
 
-    (8) term -> DATA .
-    (9) term -> DATA . COMMA term
+    (11) list -> LBRACKET term . RBRACKET
 
-    RBRACKET        reduce using rule 8 (term -> DATA .)
-    COMMA           shift and go to state 23
+    RBRACKET        shift and go to state 23
 
 
 state 20
+
+    (9) term -> DATA .
+    (10) term -> DATA . COMMA term
+
+    RBRACKET        reduce using rule 9 (term -> DATA .)
+    COMMA           shift and go to state 24
+
+
+state 21
 
     (2) statement -> SHOW LPAREN DATA RPAREN .
 
@@ -310,7 +330,7 @@ state 20
     RBRACKET        reduce using rule 2 (statement -> SHOW LPAREN DATA RPAREN .)
 
 
-state 21
+state 22
 
     (3) statement -> SHOW LPAREN NAME RPAREN .
 
@@ -320,51 +340,53 @@ state 21
     RBRACKET        reduce using rule 3 (statement -> SHOW LPAREN NAME RPAREN .)
 
 
-state 22
-
-    (10) list -> LBRACKET term RBRACKET .
-
-    RPAREN          reduce using rule 10 (list -> LBRACKET term RBRACKET .)
-    $end            reduce using rule 10 (list -> LBRACKET term RBRACKET .)
-    COMMA           reduce using rule 10 (list -> LBRACKET term RBRACKET .)
-    RBRACKET        reduce using rule 10 (list -> LBRACKET term RBRACKET .)
-
-
 state 23
 
-    (9) term -> DATA COMMA . term
-    (8) term -> . DATA
-    (9) term -> . DATA COMMA term
+    (11) list -> LBRACKET term RBRACKET .
+
+    RPAREN          reduce using rule 11 (list -> LBRACKET term RBRACKET .)
+    $end            reduce using rule 11 (list -> LBRACKET term RBRACKET .)
+    COMMA           reduce using rule 11 (list -> LBRACKET term RBRACKET .)
+    RBRACKET        reduce using rule 11 (list -> LBRACKET term RBRACKET .)
+
+
+state 24
+
+    (10) term -> DATA COMMA . term
+    (9) term -> . DATA
+    (10) term -> . DATA COMMA term
     (4) DATA -> . INT
-    (5) DATA -> . STRING
-    (6) DATA -> . list
-    (7) DATA -> . statement
-    (10) list -> . LBRACKET term RBRACKET
+    (5) DATA -> . DOUBLE
+    (6) DATA -> . STRING
+    (7) DATA -> . list
+    (8) DATA -> . statement
+    (11) list -> . LBRACKET term RBRACKET
     (1) statement -> . RECEIVE LPAREN DATA RPAREN
     (2) statement -> . SHOW LPAREN DATA RPAREN
     (3) statement -> . SHOW LPAREN NAME RPAREN
-    (11) statement -> . NAME IS DATA
-    (12) statement -> . NAME
+    (12) statement -> . NAME IS DATA
+    (13) statement -> . NAME
 
     INT             shift and go to state 9
-    STRING          shift and go to state 10
-    LBRACKET        shift and go to state 13
+    DOUBLE          shift and go to state 10
+    STRING          shift and go to state 11
+    LBRACKET        shift and go to state 14
     RECEIVE         shift and go to state 2
     SHOW            shift and go to state 3
     NAME            shift and go to state 4
 
-    DATA                           shift and go to state 19
-    term                           shift and go to state 24
-    list                           shift and go to state 11
-    statement                      shift and go to state 12
+    DATA                           shift and go to state 20
+    term                           shift and go to state 25
+    list                           shift and go to state 12
+    statement                      shift and go to state 13
 
-state 24
+state 25
 
-    (9) term -> DATA COMMA term .
+    (10) term -> DATA COMMA term .
 
-    RBRACKET        reduce using rule 9 (term -> DATA COMMA term .)
+    RBRACKET        reduce using rule 10 (term -> DATA COMMA term .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for RPAREN in state 15 resolved as shift
+WARNING: shift/reduce conflict for RPAREN in state 16 resolved as shift
