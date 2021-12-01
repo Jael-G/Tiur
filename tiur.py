@@ -2,7 +2,6 @@ import ply.lex as lex
 import ply.yacc as yacc
 from ply.lex import LexToken
 
-
 reserved = {
   'is' : "IS",
   'show' : "SHOW",
@@ -47,17 +46,23 @@ def p_receive(p):
 def p_show(p):
   '''statement : SHOW LPAREN DATA RPAREN'''
   
-  print(p.slice)
+  print(p.slice[3].value)
 
 def p_data(p):
   '''DATA : INT
           | STRING'''
- 
-  return p.slice[1]
+  p[0] = p[1]
+  return p
+
 
 def p_list(p):
-  '''statement : LBRACKET DATA RBRACKET'''
-  print(p.slice[2])
+  '''statement : LBRACKET term RBRACKET
+  
+  term : DATA
+       | DATA COMMA term
+  
+  '''
+  print(p.slice)
 
 
 def p_is(p):

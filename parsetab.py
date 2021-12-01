@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COMMA INT IS LBRACKET LIST LPAREN NAME RBRACKET RECEIVE RPAREN SHOW STRINGstatement : NAME IS RECEIVE LPAREN STRING RPARENstatement : SHOW LPAREN DATA RPARENDATA : INT\n          | STRINGstatement : LBRACKET DATA RBRACKETstatement : NAME IS DATAstatement : NAME'
+_lr_signature = 'COMMA INT IS LBRACKET LIST LPAREN NAME RBRACKET RECEIVE RPAREN SHOW STRINGstatement : NAME IS RECEIVE LPAREN STRING RPARENstatement : SHOW LPAREN DATA RPARENDATA : INT\n          | STRINGstatement : LBRACKET term RBRACKET\n  \n  term : DATA\n       | DATA COMMA term\n  \n  statement : NAME IS DATAstatement : NAME'
     
-_lr_action_items = {'NAME':([0,],[2,]),'SHOW':([0,],[3,]),'LBRACKET':([0,],[4,]),'$end':([1,2,8,9,11,13,15,17,],[0,-7,-3,-4,-6,-5,-2,-1,]),'IS':([2,],[5,]),'LPAREN':([3,10,],[6,14,]),'INT':([4,5,6,],[8,8,8,]),'STRING':([4,5,6,14,],[9,9,9,16,]),'RECEIVE':([5,],[10,]),'RBRACKET':([7,8,9,],[13,-3,-4,]),'RPAREN':([8,9,12,16,],[-3,-4,15,17,]),}
+_lr_action_items = {'NAME':([0,],[2,]),'SHOW':([0,],[3,]),'LBRACKET':([0,],[4,]),'$end':([1,2,9,10,12,14,17,20,],[0,-9,-3,-4,-8,-5,-2,-1,]),'IS':([2,],[5,]),'LPAREN':([3,11,],[6,16,]),'INT':([4,5,6,15,],[9,9,9,9,]),'STRING':([4,5,6,15,16,],[10,10,10,10,19,]),'RECEIVE':([5,],[11,]),'RBRACKET':([7,8,9,10,18,],[14,-6,-3,-4,-7,]),'COMMA':([8,9,10,],[15,-3,-4,]),'RPAREN':([9,10,13,19,],[-3,-4,17,20,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'DATA':([4,5,6,],[7,11,12,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'term':([4,15,],[7,18,]),'DATA':([4,5,6,15,],[8,12,13,8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,11 +27,13 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> NAME IS RECEIVE LPAREN STRING RPAREN','statement',6,'p_receive','temp.py',43),
-  ('statement -> SHOW LPAREN DATA RPAREN','statement',4,'p_show','temp.py',48),
-  ('DATA -> INT','DATA',1,'p_data','temp.py',53),
-  ('DATA -> STRING','DATA',1,'p_data','temp.py',54),
-  ('statement -> LBRACKET DATA RBRACKET','statement',3,'p_list','temp.py',59),
-  ('statement -> NAME IS DATA','statement',3,'p_is','temp.py',64),
-  ('statement -> NAME','statement',1,'p_variable','temp.py',69),
+  ('statement -> NAME IS RECEIVE LPAREN STRING RPAREN','statement',6,'p_receive','tiur.py',42),
+  ('statement -> SHOW LPAREN DATA RPAREN','statement',4,'p_show','tiur.py',47),
+  ('DATA -> INT','DATA',1,'p_data','tiur.py',52),
+  ('DATA -> STRING','DATA',1,'p_data','tiur.py',53),
+  ('statement -> LBRACKET term RBRACKET','statement',3,'p_list','tiur.py',59),
+  ('term -> DATA','term',1,'p_list','tiur.py',61),
+  ('term -> DATA COMMA term','term',3,'p_list','tiur.py',62),
+  ('statement -> NAME IS DATA','statement',3,'p_is','tiur.py',69),
+  ('statement -> NAME','statement',1,'p_variable','tiur.py',74),
 ]

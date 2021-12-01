@@ -1,1 +1,3 @@
-show("HEY")
+show("hey")
+[1,2,3,4,5]
+a is 12
