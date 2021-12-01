@@ -1,6 +1,7 @@
 import ply.lex as lex
 import ply.yacc as yacc
 from ply.lex import LexToken
+import sys
 TEMP_LIST = []
 reserved = {
   'is' : "IS",
@@ -95,8 +96,13 @@ def p_error(p):
 
 lexer = lex.lex()
 yacc.yacc()
+if len(sys.argv)==1:
+  print("Missing file path to run")
+  quit()
+  
+file_path = sys.argv[1]
 
-with open('./examples/code.tiur','r') as file:
+with open(file_path,'r') as file:
   code = file.read().splitlines()
 
 for line in code:
