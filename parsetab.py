@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COMMA INT IS LBRACKET LIST LPAREN NAME RBRACKET RECEIVE RPAREN SHOW STRINGstatement : NAME IS RECEIVE LPAREN STRING RPARENstatement : SHOW LPAREN DATA RPARENDATA : INT\n          | STRINGstatement : LBRACKET term RBRACKET\n  \n  term : DATA\n       | DATA COMMA term\n  \n  statement : NAME IS DATAstatement : NAME'
+_lr_signature = 'COMMA INT IS LBRACKET LIST LPAREN NAME RBRACKET RECEIVE RPAREN SHOW STRINGstatement : RECEIVE LPAREN DATA RPARENstatement : SHOW LPAREN DATA RPAREN\n  |  SHOW LPAREN NAME RPARENDATA : INT\n          | STRING\n          | list\n          | statementterm : DATA\n          | DATA COMMA termlist : LBRACKET term RBRACKETstatement : NAME IS DATAstatement : NAME'
     
-_lr_action_items = {'NAME':([0,],[2,]),'SHOW':([0,],[3,]),'LBRACKET':([0,],[4,]),'$end':([1,2,9,10,12,14,17,20,],[0,-9,-3,-4,-8,-5,-2,-1,]),'IS':([2,],[5,]),'LPAREN':([3,11,],[6,16,]),'INT':([4,5,6,15,],[9,9,9,9,]),'STRING':([4,5,6,15,16,],[10,10,10,10,19,]),'RECEIVE':([5,],[11,]),'RBRACKET':([7,8,9,10,18,],[14,-6,-3,-4,-7,]),'COMMA':([8,9,10,],[15,-3,-4,]),'RPAREN':([9,10,13,19,],[-3,-4,17,20,]),}
+_lr_action_items = {'RECEIVE':([0,5,6,7,13,23,],[2,2,2,2,2,2,]),'SHOW':([0,5,6,7,13,23,],[3,3,3,3,3,3,]),'NAME':([0,5,6,7,13,23,],[4,4,15,4,4,4,]),'$end':([1,4,9,10,11,12,16,17,20,21,22,],[0,-12,-4,-5,-6,-7,-11,-1,-2,-3,-10,]),'LPAREN':([2,3,],[5,6,]),'IS':([4,15,],[7,7,]),'RPAREN':([4,8,9,10,11,12,14,15,16,17,20,21,22,],[-12,17,-4,-5,-6,-7,20,21,-11,-1,-2,-3,-10,]),'COMMA':([4,9,10,11,12,16,17,19,20,21,22,],[-12,-4,-5,-6,-7,-11,-1,23,-2,-3,-10,]),'RBRACKET':([4,9,10,11,12,16,17,18,19,20,21,22,24,],[-12,-4,-5,-6,-7,-11,-1,22,-8,-2,-3,-10,-9,]),'INT':([5,6,7,13,23,],[9,9,9,9,9,]),'STRING':([5,6,7,13,23,],[10,10,10,10,10,]),'LBRACKET':([5,6,7,13,23,],[13,13,13,13,13,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'term':([4,15,],[7,18,]),'DATA':([4,5,6,15,],[8,12,13,8,]),}
+_lr_goto_items = {'statement':([0,5,6,7,13,23,],[1,12,12,12,12,12,]),'DATA':([5,6,7,13,23,],[8,14,16,19,19,]),'list':([5,6,7,13,23,],[11,11,11,11,11,]),'term':([13,23,],[18,24,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,13 +27,16 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> NAME IS RECEIVE LPAREN STRING RPAREN','statement',6,'p_receive','tiur.py',42),
-  ('statement -> SHOW LPAREN DATA RPAREN','statement',4,'p_show','tiur.py',47),
-  ('DATA -> INT','DATA',1,'p_data','tiur.py',52),
-  ('DATA -> STRING','DATA',1,'p_data','tiur.py',53),
-  ('statement -> LBRACKET term RBRACKET','statement',3,'p_list','tiur.py',59),
-  ('term -> DATA','term',1,'p_list','tiur.py',61),
-  ('term -> DATA COMMA term','term',3,'p_list','tiur.py',62),
-  ('statement -> NAME IS DATA','statement',3,'p_is','tiur.py',69),
-  ('statement -> NAME','statement',1,'p_variable','tiur.py',74),
+  ('statement -> RECEIVE LPAREN DATA RPAREN','statement',4,'p_receive','tiur.py',42),
+  ('statement -> SHOW LPAREN DATA RPAREN','statement',4,'p_show','tiur.py',48),
+  ('statement -> SHOW LPAREN NAME RPAREN','statement',4,'p_show','tiur.py',49),
+  ('DATA -> INT','DATA',1,'p_data','tiur.py',56),
+  ('DATA -> STRING','DATA',1,'p_data','tiur.py',57),
+  ('DATA -> list','DATA',1,'p_data','tiur.py',58),
+  ('DATA -> statement','DATA',1,'p_data','tiur.py',59),
+  ('term -> DATA','term',1,'p_term','tiur.py',64),
+  ('term -> DATA COMMA term','term',3,'p_term','tiur.py',65),
+  ('list -> LBRACKET term RBRACKET','list',3,'p_list','tiur.py',71),
+  ('statement -> NAME IS DATA','statement',3,'p_is','tiur.py',81),
+  ('statement -> NAME','statement',1,'p_variable','tiur.py',88),
 ]
