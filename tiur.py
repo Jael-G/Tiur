@@ -9,6 +9,7 @@ reserved = {
   'show' : "SHOW",
   'receive': "RECEIVE",
   'list':'LIST',
+  'of':'OF',
   'and': 'AND',
   'plus':'PLUS',
   'add':'ADD',
@@ -22,14 +23,14 @@ reserved = {
   'to':'TO',
 }
 
-tokens = ['LPAREN','RPAREN','LBRACKET', 'RBRACKET', 'COMMA', 'STRING', 'NAME', 'DOUBLE', 'INT', 'PLUS_SYMBOL','MINUS_SYMBOL','MULT_SYMBOL','DIV_SYMBOL','EXPO_SYMBOL'] + list(reserved.values())
+tokens = ['EQUAL', 'LPAREN','RPAREN','LBRACKET', 'RBRACKET', 'COMMA', 'STRING', 'NAME', 'DOUBLE', 'INT', 'MULT_SYMBOL','DIV_SYMBOL', 'PLUS_SYMBOL','MINUS_SYMBOL','EXPO_SYMBOL'] + list(reserved.values())
 
 def t_ID(t):
   r'[a-zA-Z_][a-zA-Z_0-9]*'
   t.type = reserved.get(t.value,'NAME')    # Check for reserved words
   return t
 
-
+t_EQUAL = r'\='
 t_LPAREN =r'\('
 t_RPAREN = r'\)'
 t_LBRACKET = r'\['
@@ -168,7 +169,8 @@ def p_list_term(p):
   return p
 
 def p_list(p):
-  '''list : LBRACKET list_term RBRACKET'''
+  '''list :  LIST OF list_term
+          | LBRACKET list_term RBRACKET'''
   global TEMP_LIST
   COPY = TEMP_LIST.copy()
   COPY.reverse()
@@ -178,7 +180,8 @@ def p_list(p):
 
 
 def p_is(p):
-  '''statement : NAME IS data'''
+  '''statement : NAME IS data
+               | NAME EQUAL data'''
 
   Variables[p[1]] = p.slice[3].value
   # print(Variables)
