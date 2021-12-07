@@ -1,2 +1,1 @@
-a is 12.45
-show(a)
+show("hey"*2)
