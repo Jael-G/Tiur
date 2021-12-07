@@ -8,62 +8,63 @@ Grammar
 
 Rule 0     S' -> statement
 Rule 1     statement -> RECEIVE LPAREN data RPAREN
-Rule 2     statement -> ADD data PLUS math_Term
-Rule 3     statement -> data PLUS_SYMBOL math_Term
-Rule 4     statement -> SUBSTRACT data MINUS math_Term
-Rule 5     statement -> data MINUS_SYMBOL math_Term
-Rule 6     statement -> MULTIPLY data TIMES math_Term
-Rule 7     statement -> data MULT_SYMBOL math_Term
-Rule 8     statement -> DIVIDE data BY math_Term
-Rule 9     statement -> data DIV_SYMBOL math_Term
-Rule 10    statement -> RAISE data TO math_Term
-Rule 11    statement -> data EXPO_SYMBOL math_Term
+Rule 2     statement -> ADD math_Term PLUS math_Term
+Rule 3     statement -> math_Term PLUS_SYMBOL math_Term
+Rule 4     statement -> SUBSTRACT math_Term MINUS math_Term
+Rule 5     statement -> math_Term MINUS_SYMBOL math_Term
+Rule 6     statement -> MULTIPLY math_Term TIMES math_Term
+Rule 7     statement -> math_Term MULT_SYMBOL math_Term
+Rule 8     statement -> DIVIDE math_Term BY math_Term
+Rule 9     statement -> math_Term DIV_SYMBOL math_Term
+Rule 10    statement -> RAISE math_Term TO math_Term
+Rule 11    statement -> math_Term EXPO_SYMBOL math_Term
 Rule 12    math_Term -> data
-Rule 13    statement -> SHOW LPAREN data RPAREN
-Rule 14    statement -> SHOW LPAREN NAME RPAREN
-Rule 15    data -> INT
-Rule 16    data -> DOUBLE
-Rule 17    data -> STRING
-Rule 18    data -> list
-Rule 19    data -> statement
-Rule 20    list_term -> data
-Rule 21    list_term -> data COMMA list_term
-Rule 22    list -> LIST OF list_term
-Rule 23    list -> LBRACKET list_term RBRACKET
-Rule 24    statement -> NAME IS data
-Rule 25    statement -> NAME EQUAL data
-Rule 26    statement -> NAME
+Rule 13    math_Term -> NAME
+Rule 14    statement -> SHOW LPAREN data RPAREN
+Rule 15    statement -> SHOW LPAREN NAME RPAREN
+Rule 16    data -> INT
+Rule 17    data -> DOUBLE
+Rule 18    data -> STRING
+Rule 19    data -> list
+Rule 20    data -> statement
+Rule 21    list_term -> data
+Rule 22    list_term -> data COMMA list_term
+Rule 23    list -> LIST OF list_term
+Rule 24    list -> LBRACKET list_term RBRACKET
+Rule 25    statement -> NAME IS data
+Rule 26    statement -> NAME EQUAL data
+Rule 27    statement -> NAME
 
 Terminals, with rules where they appear
 
 ADD                  : 2
 AND                  : 
 BY                   : 8
-COMMA                : 21
+COMMA                : 22
 DIVIDE               : 8
 DIV_SYMBOL           : 9
-DOUBLE               : 16
-EQUAL                : 25
+DOUBLE               : 17
+EQUAL                : 26
 EXPO_SYMBOL          : 11
-INT                  : 15
-IS                   : 24
-LBRACKET             : 23
-LIST                 : 22
-LPAREN               : 1 13 14
+INT                  : 16
+IS                   : 25
+LBRACKET             : 24
+LIST                 : 23
+LPAREN               : 1 14 15
 MINUS                : 4
 MINUS_SYMBOL         : 5
 MULTIPLY             : 6
 MULT_SYMBOL          : 7
-NAME                 : 14 24 25 26
-OF                   : 22
+NAME                 : 13 15 25 26 27
+OF                   : 23
 PLUS                 : 2
 PLUS_SYMBOL          : 3
 RAISE                : 10
-RBRACKET             : 23
+RBRACKET             : 24
 RECEIVE              : 1
-RPAREN               : 1 13 14
-SHOW                 : 13 14
-STRING               : 17
+RPAREN               : 1 14 15
+SHOW                 : 14 15
+STRING               : 18
 SUBSTRACT            : 4
 TIMES                : 6
 TO                   : 10
@@ -71,11 +72,11 @@ error                :
 
 Nonterminals, with rules where they appear
 
-data                 : 1 2 3 4 5 6 7 8 9 10 11 12 13 20 21 24 25
-list                 : 18
-list_term            : 21 22 23
-math_Term            : 2 3 4 5 6 7 8 9 10 11
-statement            : 19 0
+data                 : 1 12 14 21 22 25 26
+list                 : 19
+list_term            : 22 23 24
+math_Term            : 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11
+statement            : 20 0
 
 Parsing method: LALR
 
@@ -83,1674 +84,1844 @@ state 0
 
     (0) S' -> . statement
     (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
 
     RECEIVE         shift and go to state 2
     ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
 
     statement                      shift and go to state 1
     data                           shift and go to state 3
-    list                           shift and go to state 14
+    math_Term                      shift and go to state 5
+    list                           shift and go to state 15
 
 state 1
 
     (0) S' -> statement .
-    (19) data -> statement .
+    (20) data -> statement .
 
-    PLUS_SYMBOL     reduce using rule 19 (data -> statement .)
-    MINUS_SYMBOL    reduce using rule 19 (data -> statement .)
-    MULT_SYMBOL     reduce using rule 19 (data -> statement .)
-    DIV_SYMBOL      reduce using rule 19 (data -> statement .)
-    EXPO_SYMBOL     reduce using rule 19 (data -> statement .)
+    PLUS_SYMBOL     reduce using rule 20 (data -> statement .)
+    MINUS_SYMBOL    reduce using rule 20 (data -> statement .)
+    MULT_SYMBOL     reduce using rule 20 (data -> statement .)
+    DIV_SYMBOL      reduce using rule 20 (data -> statement .)
+    EXPO_SYMBOL     reduce using rule 20 (data -> statement .)
 
 
 state 2
 
     (1) statement -> RECEIVE . LPAREN data RPAREN
 
-    LPAREN          shift and go to state 17
+    LPAREN          shift and go to state 18
 
 
 state 3
 
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 4
-
-    (2) statement -> ADD . data PLUS math_Term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 23
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 5
-
-    (4) statement -> SUBSTRACT . data MINUS math_Term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 25
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 6
-
-    (6) statement -> MULTIPLY . data TIMES math_Term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 26
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 7
-
-    (8) statement -> DIVIDE . data BY math_Term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 27
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 8
-
-    (10) statement -> RAISE . data TO math_Term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 28
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 9
-
-    (13) statement -> SHOW . LPAREN data RPAREN
-    (14) statement -> SHOW . LPAREN NAME RPAREN
-
-    LPAREN          shift and go to state 29
-
-
-state 10
-
-    (24) statement -> NAME . IS data
-    (25) statement -> NAME . EQUAL data
-    (26) statement -> NAME .
-
-    IS              shift and go to state 30
-    EQUAL           shift and go to state 31
-    $end            reduce using rule 26 (statement -> NAME .)
-    PLUS_SYMBOL     reduce using rule 26 (statement -> NAME .)
-    MINUS_SYMBOL    reduce using rule 26 (statement -> NAME .)
-    MULT_SYMBOL     reduce using rule 26 (statement -> NAME .)
-    DIV_SYMBOL      reduce using rule 26 (statement -> NAME .)
-    EXPO_SYMBOL     reduce using rule 26 (statement -> NAME .)
-    PLUS            reduce using rule 26 (statement -> NAME .)
-    MINUS           reduce using rule 26 (statement -> NAME .)
-    TIMES           reduce using rule 26 (statement -> NAME .)
-    BY              reduce using rule 26 (statement -> NAME .)
-    TO              reduce using rule 26 (statement -> NAME .)
-    COMMA           reduce using rule 26 (statement -> NAME .)
-    RBRACKET        reduce using rule 26 (statement -> NAME .)
-    RPAREN          reduce using rule 26 (statement -> NAME .)
-
-
-state 11
-
-    (15) data -> INT .
-
-    PLUS_SYMBOL     reduce using rule 15 (data -> INT .)
-    MINUS_SYMBOL    reduce using rule 15 (data -> INT .)
-    MULT_SYMBOL     reduce using rule 15 (data -> INT .)
-    DIV_SYMBOL      reduce using rule 15 (data -> INT .)
-    EXPO_SYMBOL     reduce using rule 15 (data -> INT .)
-    PLUS            reduce using rule 15 (data -> INT .)
-    MINUS           reduce using rule 15 (data -> INT .)
-    TIMES           reduce using rule 15 (data -> INT .)
-    BY              reduce using rule 15 (data -> INT .)
-    TO              reduce using rule 15 (data -> INT .)
-    COMMA           reduce using rule 15 (data -> INT .)
-    RBRACKET        reduce using rule 15 (data -> INT .)
-    RPAREN          reduce using rule 15 (data -> INT .)
-    $end            reduce using rule 15 (data -> INT .)
-
-
-state 12
-
-    (16) data -> DOUBLE .
-
-    PLUS_SYMBOL     reduce using rule 16 (data -> DOUBLE .)
-    MINUS_SYMBOL    reduce using rule 16 (data -> DOUBLE .)
-    MULT_SYMBOL     reduce using rule 16 (data -> DOUBLE .)
-    DIV_SYMBOL      reduce using rule 16 (data -> DOUBLE .)
-    EXPO_SYMBOL     reduce using rule 16 (data -> DOUBLE .)
-    PLUS            reduce using rule 16 (data -> DOUBLE .)
-    MINUS           reduce using rule 16 (data -> DOUBLE .)
-    TIMES           reduce using rule 16 (data -> DOUBLE .)
-    BY              reduce using rule 16 (data -> DOUBLE .)
-    TO              reduce using rule 16 (data -> DOUBLE .)
-    COMMA           reduce using rule 16 (data -> DOUBLE .)
-    RBRACKET        reduce using rule 16 (data -> DOUBLE .)
-    RPAREN          reduce using rule 16 (data -> DOUBLE .)
-    $end            reduce using rule 16 (data -> DOUBLE .)
-
-
-state 13
-
-    (17) data -> STRING .
-
-    PLUS_SYMBOL     reduce using rule 17 (data -> STRING .)
-    MINUS_SYMBOL    reduce using rule 17 (data -> STRING .)
-    MULT_SYMBOL     reduce using rule 17 (data -> STRING .)
-    DIV_SYMBOL      reduce using rule 17 (data -> STRING .)
-    EXPO_SYMBOL     reduce using rule 17 (data -> STRING .)
-    PLUS            reduce using rule 17 (data -> STRING .)
-    MINUS           reduce using rule 17 (data -> STRING .)
-    TIMES           reduce using rule 17 (data -> STRING .)
-    BY              reduce using rule 17 (data -> STRING .)
-    TO              reduce using rule 17 (data -> STRING .)
-    COMMA           reduce using rule 17 (data -> STRING .)
-    RBRACKET        reduce using rule 17 (data -> STRING .)
-    RPAREN          reduce using rule 17 (data -> STRING .)
-    $end            reduce using rule 17 (data -> STRING .)
-
-
-state 14
-
-    (18) data -> list .
-
-    PLUS_SYMBOL     reduce using rule 18 (data -> list .)
-    MINUS_SYMBOL    reduce using rule 18 (data -> list .)
-    MULT_SYMBOL     reduce using rule 18 (data -> list .)
-    DIV_SYMBOL      reduce using rule 18 (data -> list .)
-    EXPO_SYMBOL     reduce using rule 18 (data -> list .)
-    PLUS            reduce using rule 18 (data -> list .)
-    MINUS           reduce using rule 18 (data -> list .)
-    TIMES           reduce using rule 18 (data -> list .)
-    BY              reduce using rule 18 (data -> list .)
-    TO              reduce using rule 18 (data -> list .)
-    COMMA           reduce using rule 18 (data -> list .)
-    RBRACKET        reduce using rule 18 (data -> list .)
-    RPAREN          reduce using rule 18 (data -> list .)
-    $end            reduce using rule 18 (data -> list .)
-
-
-state 15
-
-    (22) list -> LIST . OF list_term
-
-    OF              shift and go to state 32
-
-
-state 16
-
-    (23) list -> LBRACKET . list_term RBRACKET
-    (20) list_term -> . data
-    (21) list_term -> . data COMMA list_term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    list_term                      shift and go to state 33
-    data                           shift and go to state 34
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 17
-
-    (1) statement -> RECEIVE LPAREN . data RPAREN
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 35
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 18
-
-    (3) statement -> data PLUS_SYMBOL . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 37
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 19
-
-    (5) statement -> data MINUS_SYMBOL . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 38
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 20
-
-    (7) statement -> data MULT_SYMBOL . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 39
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 21
-
-    (9) statement -> data DIV_SYMBOL . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 40
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 22
-
-    (11) statement -> data EXPO_SYMBOL . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 41
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 23
-
-    (2) statement -> ADD data . PLUS math_Term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    PLUS            shift and go to state 42
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 24
-
-    (19) data -> statement .
-
-    PLUS            reduce using rule 19 (data -> statement .)
-    PLUS_SYMBOL     reduce using rule 19 (data -> statement .)
-    MINUS_SYMBOL    reduce using rule 19 (data -> statement .)
-    MULT_SYMBOL     reduce using rule 19 (data -> statement .)
-    DIV_SYMBOL      reduce using rule 19 (data -> statement .)
-    EXPO_SYMBOL     reduce using rule 19 (data -> statement .)
-    MINUS           reduce using rule 19 (data -> statement .)
-    TIMES           reduce using rule 19 (data -> statement .)
-    BY              reduce using rule 19 (data -> statement .)
-    TO              reduce using rule 19 (data -> statement .)
-    COMMA           reduce using rule 19 (data -> statement .)
-    RBRACKET        reduce using rule 19 (data -> statement .)
-    RPAREN          reduce using rule 19 (data -> statement .)
-    $end            reduce using rule 19 (data -> statement .)
-
-
-state 25
-
-    (4) statement -> SUBSTRACT data . MINUS math_Term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    MINUS           shift and go to state 43
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 26
-
-    (6) statement -> MULTIPLY data . TIMES math_Term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    TIMES           shift and go to state 44
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 27
-
-    (8) statement -> DIVIDE data . BY math_Term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    BY              shift and go to state 45
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 28
-
-    (10) statement -> RAISE data . TO math_Term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    TO              shift and go to state 46
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 29
-
-    (13) statement -> SHOW LPAREN . data RPAREN
-    (14) statement -> SHOW LPAREN . NAME RPAREN
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    NAME            shift and go to state 48
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-
-    data                           shift and go to state 47
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 30
-
-    (24) statement -> NAME IS . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 49
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 31
-
-    (25) statement -> NAME EQUAL . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    data                           shift and go to state 50
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 32
-
-    (22) list -> LIST OF . list_term
-    (20) list_term -> . data
-    (21) list_term -> . data COMMA list_term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
-
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
-
-    list_term                      shift and go to state 51
-    data                           shift and go to state 34
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
-
-state 33
-
-    (23) list -> LBRACKET list_term . RBRACKET
-
-    RBRACKET        shift and go to state 52
-
-
-state 34
-
-    (20) list_term -> data .
-    (21) list_term -> data . COMMA list_term
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-  ! shift/reduce conflict for COMMA resolved as shift
-  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
-  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
-  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
-    RBRACKET        reduce using rule 20 (list_term -> data .)
-    $end            reduce using rule 20 (list_term -> data .)
-    PLUS            reduce using rule 20 (list_term -> data .)
-    MINUS           reduce using rule 20 (list_term -> data .)
-    TIMES           reduce using rule 20 (list_term -> data .)
-    BY              reduce using rule 20 (list_term -> data .)
-    TO              reduce using rule 20 (list_term -> data .)
-    RPAREN          reduce using rule 20 (list_term -> data .)
-    COMMA           shift and go to state 53
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-  ! PLUS_SYMBOL     [ reduce using rule 20 (list_term -> data .) ]
-  ! MINUS_SYMBOL    [ reduce using rule 20 (list_term -> data .) ]
-  ! MULT_SYMBOL     [ reduce using rule 20 (list_term -> data .) ]
-  ! DIV_SYMBOL      [ reduce using rule 20 (list_term -> data .) ]
-  ! EXPO_SYMBOL     [ reduce using rule 20 (list_term -> data .) ]
-  ! COMMA           [ reduce using rule 20 (list_term -> data .) ]
-
-
-state 35
-
-    (1) statement -> RECEIVE LPAREN data . RPAREN
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
-
-    RPAREN          shift and go to state 54
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
-
-
-state 36
-
     (12) math_Term -> data .
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
 
-  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
-  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
-  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
-    $end            reduce using rule 12 (math_Term -> data .)
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
     PLUS            reduce using rule 12 (math_Term -> data .)
     MINUS           reduce using rule 12 (math_Term -> data .)
     TIMES           reduce using rule 12 (math_Term -> data .)
     BY              reduce using rule 12 (math_Term -> data .)
     TO              reduce using rule 12 (math_Term -> data .)
+    $end            reduce using rule 12 (math_Term -> data .)
     COMMA           reduce using rule 12 (math_Term -> data .)
     RBRACKET        reduce using rule 12 (math_Term -> data .)
     RPAREN          reduce using rule 12 (math_Term -> data .)
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
 
-  ! PLUS_SYMBOL     [ reduce using rule 12 (math_Term -> data .) ]
-  ! MINUS_SYMBOL    [ reduce using rule 12 (math_Term -> data .) ]
-  ! MULT_SYMBOL     [ reduce using rule 12 (math_Term -> data .) ]
-  ! DIV_SYMBOL      [ reduce using rule 12 (math_Term -> data .) ]
-  ! EXPO_SYMBOL     [ reduce using rule 12 (math_Term -> data .) ]
+
+state 4
+
+    (2) statement -> ADD . math_Term PLUS math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 19
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 5
+
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 6
+
+    (4) statement -> SUBSTRACT . math_Term MINUS math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 27
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 7
+
+    (6) statement -> MULTIPLY . math_Term TIMES math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 28
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 8
+
+    (8) statement -> DIVIDE . math_Term BY math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 29
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 9
+
+    (10) statement -> RAISE . math_Term TO math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 30
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 10
+
+    (14) statement -> SHOW . LPAREN data RPAREN
+    (15) statement -> SHOW . LPAREN NAME RPAREN
+
+    LPAREN          shift and go to state 31
+
+
+state 11
+
+    (25) statement -> NAME . IS data
+    (26) statement -> NAME . EQUAL data
+    (27) statement -> NAME .
+    (13) math_Term -> NAME .
+
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+    IS              shift and go to state 32
+    EQUAL           shift and go to state 33
+    $end            reduce using rule 27 (statement -> NAME .)
+    COMMA           reduce using rule 27 (statement -> NAME .)
+    RBRACKET        reduce using rule 27 (statement -> NAME .)
+    RPAREN          reduce using rule 27 (statement -> NAME .)
+    PLUS            reduce using rule 27 (statement -> NAME .)
+    MINUS           reduce using rule 27 (statement -> NAME .)
+    TIMES           reduce using rule 27 (statement -> NAME .)
+    BY              reduce using rule 27 (statement -> NAME .)
+    TO              reduce using rule 27 (statement -> NAME .)
+    PLUS_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    MINUS_SYMBOL    reduce using rule 13 (math_Term -> NAME .)
+    MULT_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    DIV_SYMBOL      reduce using rule 13 (math_Term -> NAME .)
+    EXPO_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+
+  ! PLUS_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 27 (statement -> NAME .) ]
+  ! MULT_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! DIV_SYMBOL      [ reduce using rule 27 (statement -> NAME .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+
+
+state 12
+
+    (16) data -> INT .
+
+    PLUS_SYMBOL     reduce using rule 16 (data -> INT .)
+    MINUS_SYMBOL    reduce using rule 16 (data -> INT .)
+    MULT_SYMBOL     reduce using rule 16 (data -> INT .)
+    DIV_SYMBOL      reduce using rule 16 (data -> INT .)
+    EXPO_SYMBOL     reduce using rule 16 (data -> INT .)
+    PLUS            reduce using rule 16 (data -> INT .)
+    MINUS           reduce using rule 16 (data -> INT .)
+    TIMES           reduce using rule 16 (data -> INT .)
+    BY              reduce using rule 16 (data -> INT .)
+    TO              reduce using rule 16 (data -> INT .)
+    COMMA           reduce using rule 16 (data -> INT .)
+    RBRACKET        reduce using rule 16 (data -> INT .)
+    RPAREN          reduce using rule 16 (data -> INT .)
+    $end            reduce using rule 16 (data -> INT .)
+
+
+state 13
+
+    (17) data -> DOUBLE .
+
+    PLUS_SYMBOL     reduce using rule 17 (data -> DOUBLE .)
+    MINUS_SYMBOL    reduce using rule 17 (data -> DOUBLE .)
+    MULT_SYMBOL     reduce using rule 17 (data -> DOUBLE .)
+    DIV_SYMBOL      reduce using rule 17 (data -> DOUBLE .)
+    EXPO_SYMBOL     reduce using rule 17 (data -> DOUBLE .)
+    PLUS            reduce using rule 17 (data -> DOUBLE .)
+    MINUS           reduce using rule 17 (data -> DOUBLE .)
+    TIMES           reduce using rule 17 (data -> DOUBLE .)
+    BY              reduce using rule 17 (data -> DOUBLE .)
+    TO              reduce using rule 17 (data -> DOUBLE .)
+    COMMA           reduce using rule 17 (data -> DOUBLE .)
+    RBRACKET        reduce using rule 17 (data -> DOUBLE .)
+    RPAREN          reduce using rule 17 (data -> DOUBLE .)
+    $end            reduce using rule 17 (data -> DOUBLE .)
+
+
+state 14
+
+    (18) data -> STRING .
+
+    PLUS_SYMBOL     reduce using rule 18 (data -> STRING .)
+    MINUS_SYMBOL    reduce using rule 18 (data -> STRING .)
+    MULT_SYMBOL     reduce using rule 18 (data -> STRING .)
+    DIV_SYMBOL      reduce using rule 18 (data -> STRING .)
+    EXPO_SYMBOL     reduce using rule 18 (data -> STRING .)
+    PLUS            reduce using rule 18 (data -> STRING .)
+    MINUS           reduce using rule 18 (data -> STRING .)
+    TIMES           reduce using rule 18 (data -> STRING .)
+    BY              reduce using rule 18 (data -> STRING .)
+    TO              reduce using rule 18 (data -> STRING .)
+    COMMA           reduce using rule 18 (data -> STRING .)
+    RBRACKET        reduce using rule 18 (data -> STRING .)
+    RPAREN          reduce using rule 18 (data -> STRING .)
+    $end            reduce using rule 18 (data -> STRING .)
+
+
+state 15
+
+    (19) data -> list .
+
+    PLUS_SYMBOL     reduce using rule 19 (data -> list .)
+    MINUS_SYMBOL    reduce using rule 19 (data -> list .)
+    MULT_SYMBOL     reduce using rule 19 (data -> list .)
+    DIV_SYMBOL      reduce using rule 19 (data -> list .)
+    EXPO_SYMBOL     reduce using rule 19 (data -> list .)
+    PLUS            reduce using rule 19 (data -> list .)
+    MINUS           reduce using rule 19 (data -> list .)
+    TIMES           reduce using rule 19 (data -> list .)
+    BY              reduce using rule 19 (data -> list .)
+    TO              reduce using rule 19 (data -> list .)
+    COMMA           reduce using rule 19 (data -> list .)
+    RBRACKET        reduce using rule 19 (data -> list .)
+    RPAREN          reduce using rule 19 (data -> list .)
+    $end            reduce using rule 19 (data -> list .)
+
+
+state 16
+
+    (23) list -> LIST . OF list_term
+
+    OF              shift and go to state 34
+
+
+state 17
+
+    (24) list -> LBRACKET . list_term RBRACKET
+    (21) list_term -> . data
+    (22) list_term -> . data COMMA list_term
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    list_term                      shift and go to state 35
+    data                           shift and go to state 36
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 18
+
+    (1) statement -> RECEIVE LPAREN . data RPAREN
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    data                           shift and go to state 37
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 19
+
+    (2) statement -> ADD math_Term . PLUS math_Term
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    PLUS            shift and go to state 38
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 20
+
+    (13) math_Term -> NAME .
+    (25) statement -> NAME . IS data
+    (26) statement -> NAME . EQUAL data
+    (27) statement -> NAME .
+
+  ! reduce/reduce conflict for PLUS resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MINUS resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for TIMES resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for BY resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for TO resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for $end resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for COMMA resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for RBRACKET resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for RPAREN resolved using rule 13 (math_Term -> NAME .)
+    PLUS            reduce using rule 13 (math_Term -> NAME .)
+    PLUS_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    MINUS_SYMBOL    reduce using rule 13 (math_Term -> NAME .)
+    MULT_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    DIV_SYMBOL      reduce using rule 13 (math_Term -> NAME .)
+    EXPO_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    MINUS           reduce using rule 13 (math_Term -> NAME .)
+    TIMES           reduce using rule 13 (math_Term -> NAME .)
+    BY              reduce using rule 13 (math_Term -> NAME .)
+    TO              reduce using rule 13 (math_Term -> NAME .)
+    $end            reduce using rule 13 (math_Term -> NAME .)
+    COMMA           reduce using rule 13 (math_Term -> NAME .)
+    RBRACKET        reduce using rule 13 (math_Term -> NAME .)
+    RPAREN          reduce using rule 13 (math_Term -> NAME .)
+    IS              shift and go to state 32
+    EQUAL           shift and go to state 33
+
+  ! PLUS            [ reduce using rule 27 (statement -> NAME .) ]
+  ! PLUS_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 27 (statement -> NAME .) ]
+  ! MULT_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! DIV_SYMBOL      [ reduce using rule 27 (statement -> NAME .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! MINUS           [ reduce using rule 27 (statement -> NAME .) ]
+  ! TIMES           [ reduce using rule 27 (statement -> NAME .) ]
+  ! BY              [ reduce using rule 27 (statement -> NAME .) ]
+  ! TO              [ reduce using rule 27 (statement -> NAME .) ]
+  ! $end            [ reduce using rule 27 (statement -> NAME .) ]
+  ! COMMA           [ reduce using rule 27 (statement -> NAME .) ]
+  ! RBRACKET        [ reduce using rule 27 (statement -> NAME .) ]
+  ! RPAREN          [ reduce using rule 27 (statement -> NAME .) ]
+
+
+state 21
+
+    (20) data -> statement .
+
+    PLUS            reduce using rule 20 (data -> statement .)
+    PLUS_SYMBOL     reduce using rule 20 (data -> statement .)
+    MINUS_SYMBOL    reduce using rule 20 (data -> statement .)
+    MULT_SYMBOL     reduce using rule 20 (data -> statement .)
+    DIV_SYMBOL      reduce using rule 20 (data -> statement .)
+    EXPO_SYMBOL     reduce using rule 20 (data -> statement .)
+    MINUS           reduce using rule 20 (data -> statement .)
+    TIMES           reduce using rule 20 (data -> statement .)
+    BY              reduce using rule 20 (data -> statement .)
+    TO              reduce using rule 20 (data -> statement .)
+    COMMA           reduce using rule 20 (data -> statement .)
+    RBRACKET        reduce using rule 20 (data -> statement .)
+    RPAREN          reduce using rule 20 (data -> statement .)
+    $end            reduce using rule 20 (data -> statement .)
+
+
+state 22
+
+    (3) statement -> math_Term PLUS_SYMBOL . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 39
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 23
+
+    (5) statement -> math_Term MINUS_SYMBOL . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 40
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 24
+
+    (7) statement -> math_Term MULT_SYMBOL . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 41
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 25
+
+    (9) statement -> math_Term DIV_SYMBOL . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 42
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 26
+
+    (11) statement -> math_Term EXPO_SYMBOL . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    math_Term                      shift and go to state 43
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+
+state 27
+
+    (4) statement -> SUBSTRACT math_Term . MINUS math_Term
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    MINUS           shift and go to state 44
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 28
+
+    (6) statement -> MULTIPLY math_Term . TIMES math_Term
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    TIMES           shift and go to state 45
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 29
+
+    (8) statement -> DIVIDE math_Term . BY math_Term
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    BY              shift and go to state 46
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 30
+
+    (10) statement -> RAISE math_Term . TO math_Term
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
+
+    TO              shift and go to state 47
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+
+state 31
+
+    (14) statement -> SHOW LPAREN . data RPAREN
+    (15) statement -> SHOW LPAREN . NAME RPAREN
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    NAME            shift and go to state 49
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+
+    data                           shift and go to state 48
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 32
+
+    (25) statement -> NAME IS . data
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    data                           shift and go to state 50
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 33
+
+    (26) statement -> NAME EQUAL . data
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    data                           shift and go to state 51
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 34
+
+    (23) list -> LIST OF . list_term
+    (21) list_term -> . data
+    (22) list_term -> . data COMMA list_term
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    list_term                      shift and go to state 52
+    data                           shift and go to state 36
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 35
+
+    (24) list -> LBRACKET list_term . RBRACKET
+
+    RBRACKET        shift and go to state 53
+
+
+state 36
+
+    (21) list_term -> data .
+    (22) list_term -> data . COMMA list_term
+    (12) math_Term -> data .
+
+  ! shift/reduce conflict for COMMA resolved as shift
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 12 (math_Term -> data .)
+    RBRACKET        reduce using rule 21 (list_term -> data .)
+    $end            reduce using rule 21 (list_term -> data .)
+    PLUS            reduce using rule 21 (list_term -> data .)
+    MINUS           reduce using rule 21 (list_term -> data .)
+    TIMES           reduce using rule 21 (list_term -> data .)
+    BY              reduce using rule 21 (list_term -> data .)
+    TO              reduce using rule 21 (list_term -> data .)
+    RPAREN          reduce using rule 21 (list_term -> data .)
+    COMMA           shift and go to state 54
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
+
+  ! PLUS_SYMBOL     [ reduce using rule 21 (list_term -> data .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 21 (list_term -> data .) ]
+  ! MULT_SYMBOL     [ reduce using rule 21 (list_term -> data .) ]
+  ! DIV_SYMBOL      [ reduce using rule 21 (list_term -> data .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 21 (list_term -> data .) ]
+  ! COMMA           [ reduce using rule 21 (list_term -> data .) ]
 
 
 state 37
 
-    (3) statement -> data PLUS_SYMBOL math_Term .
+    (1) statement -> RECEIVE LPAREN data . RPAREN
+    (12) math_Term -> data .
 
-    $end            reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    PLUS_SYMBOL     reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    MINUS_SYMBOL    reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    MULT_SYMBOL     reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    DIV_SYMBOL      reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    EXPO_SYMBOL     reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    PLUS            reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    MINUS           reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    TIMES           reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    BY              reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    TO              reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    COMMA           reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    RBRACKET        reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
-    RPAREN          reduce using rule 3 (statement -> data PLUS_SYMBOL math_Term .)
+    RPAREN          shift and go to state 55
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
 
 
 state 38
 
-    (5) statement -> data MINUS_SYMBOL math_Term .
+    (2) statement -> ADD math_Term PLUS . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
 
-    $end            reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    PLUS_SYMBOL     reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    MINUS_SYMBOL    reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    MULT_SYMBOL     reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    DIV_SYMBOL      reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    EXPO_SYMBOL     reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    PLUS            reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    MINUS           reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    TIMES           reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    BY              reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    TO              reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    COMMA           reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    RBRACKET        reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
-    RPAREN          reduce using rule 5 (statement -> data MINUS_SYMBOL math_Term .)
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
 
+    math_Term                      shift and go to state 56
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
 
 state 39
 
-    (7) statement -> data MULT_SYMBOL math_Term .
+    (3) statement -> math_Term PLUS_SYMBOL math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    PLUS_SYMBOL     reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    MINUS_SYMBOL    reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    MULT_SYMBOL     reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    DIV_SYMBOL      reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    EXPO_SYMBOL     reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    PLUS            reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    MINUS           reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    TIMES           reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    BY              reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    TO              reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    COMMA           reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    RBRACKET        reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
-    RPAREN          reduce using rule 7 (statement -> data MULT_SYMBOL math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    PLUS            reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    MINUS           reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    TIMES           reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    BY              reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    TO              reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    COMMA           reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    RBRACKET        reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    RPAREN          reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 3 (statement -> math_Term PLUS_SYMBOL math_Term .) ]
 
 
 state 40
 
-    (9) statement -> data DIV_SYMBOL math_Term .
+    (5) statement -> math_Term MINUS_SYMBOL math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    PLUS_SYMBOL     reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    MINUS_SYMBOL    reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    MULT_SYMBOL     reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    DIV_SYMBOL      reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    EXPO_SYMBOL     reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    PLUS            reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    MINUS           reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    TIMES           reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    BY              reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    TO              reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    COMMA           reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    RBRACKET        reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
-    RPAREN          reduce using rule 9 (statement -> data DIV_SYMBOL math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    PLUS            reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    MINUS           reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    TIMES           reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    BY              reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    TO              reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    COMMA           reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    RBRACKET        reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    RPAREN          reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 5 (statement -> math_Term MINUS_SYMBOL math_Term .) ]
 
 
 state 41
 
-    (11) statement -> data EXPO_SYMBOL math_Term .
+    (7) statement -> math_Term MULT_SYMBOL math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    PLUS_SYMBOL     reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    MINUS_SYMBOL    reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    MULT_SYMBOL     reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    DIV_SYMBOL      reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    EXPO_SYMBOL     reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    PLUS            reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    MINUS           reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    TIMES           reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    BY              reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    TO              reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    COMMA           reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    RBRACKET        reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
-    RPAREN          reduce using rule 11 (statement -> data EXPO_SYMBOL math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    PLUS            reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    MINUS           reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    TIMES           reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    BY              reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    TO              reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    COMMA           reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    RBRACKET        reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    RPAREN          reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 7 (statement -> math_Term MULT_SYMBOL math_Term .) ]
 
 
 state 42
 
-    (2) statement -> ADD data PLUS . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (9) statement -> math_Term DIV_SYMBOL math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    PLUS            reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    MINUS           reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    TIMES           reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    BY              reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    TO              reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    COMMA           reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    RBRACKET        reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    RPAREN          reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
 
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 55
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
+  ! PLUS_SYMBOL     [ reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 9 (statement -> math_Term DIV_SYMBOL math_Term .) ]
+
 
 state 43
 
-    (4) statement -> SUBSTRACT data MINUS . math_Term
-    (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (11) statement -> math_Term EXPO_SYMBOL math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    PLUS            reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    MINUS           reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    TIMES           reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    BY              reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    TO              reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    COMMA           reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    RBRACKET        reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    RPAREN          reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
 
-    data                           shift and go to state 36
-    math_Term                      shift and go to state 56
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
+  ! PLUS_SYMBOL     [ reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 11 (statement -> math_Term EXPO_SYMBOL math_Term .) ]
+
 
 state 44
 
-    (6) statement -> MULTIPLY data TIMES . math_Term
+    (4) statement -> SUBSTRACT math_Term MINUS . math_Term
     (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
     (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
     RECEIVE         shift and go to state 2
     ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
 
-    data                           shift and go to state 36
     math_Term                      shift and go to state 57
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
 
 state 45
 
-    (8) statement -> DIVIDE data BY . math_Term
+    (6) statement -> MULTIPLY math_Term TIMES . math_Term
     (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
     (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
     RECEIVE         shift and go to state 2
     ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
 
-    data                           shift and go to state 36
     math_Term                      shift and go to state 58
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
 
 state 46
 
-    (10) statement -> RAISE data TO . math_Term
+    (8) statement -> DIVIDE math_Term BY . math_Term
     (12) math_Term -> . data
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
     (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
     RECEIVE         shift and go to state 2
     ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
 
-    data                           shift and go to state 36
     math_Term                      shift and go to state 59
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
 
 state 47
 
-    (13) statement -> SHOW LPAREN data . RPAREN
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
+    (10) statement -> RAISE math_Term TO . math_Term
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
 
-    RPAREN          shift and go to state 60
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
+    NAME            shift and go to state 20
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
 
+    math_Term                      shift and go to state 60
+    data                           shift and go to state 3
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
 
 state 48
 
-    (14) statement -> SHOW LPAREN NAME . RPAREN
-    (24) statement -> NAME . IS data
-    (25) statement -> NAME . EQUAL data
-    (26) statement -> NAME .
+    (14) statement -> SHOW LPAREN data . RPAREN
+    (12) math_Term -> data .
 
-  ! shift/reduce conflict for RPAREN resolved as shift
     RPAREN          shift and go to state 61
-    IS              shift and go to state 30
-    EQUAL           shift and go to state 31
-    PLUS_SYMBOL     reduce using rule 26 (statement -> NAME .)
-    MINUS_SYMBOL    reduce using rule 26 (statement -> NAME .)
-    MULT_SYMBOL     reduce using rule 26 (statement -> NAME .)
-    DIV_SYMBOL      reduce using rule 26 (statement -> NAME .)
-    EXPO_SYMBOL     reduce using rule 26 (statement -> NAME .)
-
-  ! RPAREN          [ reduce using rule 26 (statement -> NAME .) ]
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
 
 
 state 49
 
-    (24) statement -> NAME IS data .
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
+    (15) statement -> SHOW LPAREN NAME . RPAREN
+    (25) statement -> NAME . IS data
+    (26) statement -> NAME . EQUAL data
+    (27) statement -> NAME .
+    (13) math_Term -> NAME .
 
-  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
-  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
-  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
-    $end            reduce using rule 24 (statement -> NAME IS data .)
-    PLUS            reduce using rule 24 (statement -> NAME IS data .)
-    MINUS           reduce using rule 24 (statement -> NAME IS data .)
-    TIMES           reduce using rule 24 (statement -> NAME IS data .)
-    BY              reduce using rule 24 (statement -> NAME IS data .)
-    TO              reduce using rule 24 (statement -> NAME IS data .)
-    COMMA           reduce using rule 24 (statement -> NAME IS data .)
-    RBRACKET        reduce using rule 24 (statement -> NAME IS data .)
-    RPAREN          reduce using rule 24 (statement -> NAME IS data .)
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
+  ! shift/reduce conflict for RPAREN resolved as shift
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 13 (math_Term -> NAME .)
+    RPAREN          shift and go to state 62
+    IS              shift and go to state 32
+    EQUAL           shift and go to state 33
+    PLUS_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    MINUS_SYMBOL    reduce using rule 13 (math_Term -> NAME .)
+    MULT_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
+    DIV_SYMBOL      reduce using rule 13 (math_Term -> NAME .)
+    EXPO_SYMBOL     reduce using rule 13 (math_Term -> NAME .)
 
-  ! PLUS_SYMBOL     [ reduce using rule 24 (statement -> NAME IS data .) ]
-  ! MINUS_SYMBOL    [ reduce using rule 24 (statement -> NAME IS data .) ]
-  ! MULT_SYMBOL     [ reduce using rule 24 (statement -> NAME IS data .) ]
-  ! DIV_SYMBOL      [ reduce using rule 24 (statement -> NAME IS data .) ]
-  ! EXPO_SYMBOL     [ reduce using rule 24 (statement -> NAME IS data .) ]
+  ! RPAREN          [ reduce using rule 27 (statement -> NAME .) ]
+  ! PLUS_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 27 (statement -> NAME .) ]
+  ! MULT_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
+  ! DIV_SYMBOL      [ reduce using rule 27 (statement -> NAME .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 27 (statement -> NAME .) ]
 
 
 state 50
 
-    (25) statement -> NAME EQUAL data .
-    (3) statement -> data . PLUS_SYMBOL math_Term
-    (5) statement -> data . MINUS_SYMBOL math_Term
-    (7) statement -> data . MULT_SYMBOL math_Term
-    (9) statement -> data . DIV_SYMBOL math_Term
-    (11) statement -> data . EXPO_SYMBOL math_Term
+    (25) statement -> NAME IS data .
+    (12) math_Term -> data .
 
-  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
-  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
-  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
-  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
-    $end            reduce using rule 25 (statement -> NAME EQUAL data .)
-    PLUS            reduce using rule 25 (statement -> NAME EQUAL data .)
-    MINUS           reduce using rule 25 (statement -> NAME EQUAL data .)
-    TIMES           reduce using rule 25 (statement -> NAME EQUAL data .)
-    BY              reduce using rule 25 (statement -> NAME EQUAL data .)
-    TO              reduce using rule 25 (statement -> NAME EQUAL data .)
-    COMMA           reduce using rule 25 (statement -> NAME EQUAL data .)
-    RBRACKET        reduce using rule 25 (statement -> NAME EQUAL data .)
-    RPAREN          reduce using rule 25 (statement -> NAME EQUAL data .)
-    PLUS_SYMBOL     shift and go to state 18
-    MINUS_SYMBOL    shift and go to state 19
-    MULT_SYMBOL     shift and go to state 20
-    DIV_SYMBOL      shift and go to state 21
-    EXPO_SYMBOL     shift and go to state 22
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 12 (math_Term -> data .)
+    $end            reduce using rule 25 (statement -> NAME IS data .)
+    PLUS            reduce using rule 25 (statement -> NAME IS data .)
+    MINUS           reduce using rule 25 (statement -> NAME IS data .)
+    TIMES           reduce using rule 25 (statement -> NAME IS data .)
+    BY              reduce using rule 25 (statement -> NAME IS data .)
+    TO              reduce using rule 25 (statement -> NAME IS data .)
+    COMMA           reduce using rule 25 (statement -> NAME IS data .)
+    RBRACKET        reduce using rule 25 (statement -> NAME IS data .)
+    RPAREN          reduce using rule 25 (statement -> NAME IS data .)
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
 
-  ! PLUS_SYMBOL     [ reduce using rule 25 (statement -> NAME EQUAL data .) ]
-  ! MINUS_SYMBOL    [ reduce using rule 25 (statement -> NAME EQUAL data .) ]
-  ! MULT_SYMBOL     [ reduce using rule 25 (statement -> NAME EQUAL data .) ]
-  ! DIV_SYMBOL      [ reduce using rule 25 (statement -> NAME EQUAL data .) ]
-  ! EXPO_SYMBOL     [ reduce using rule 25 (statement -> NAME EQUAL data .) ]
+  ! PLUS_SYMBOL     [ reduce using rule 25 (statement -> NAME IS data .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 25 (statement -> NAME IS data .) ]
+  ! MULT_SYMBOL     [ reduce using rule 25 (statement -> NAME IS data .) ]
+  ! DIV_SYMBOL      [ reduce using rule 25 (statement -> NAME IS data .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 25 (statement -> NAME IS data .) ]
 
 
 state 51
 
-    (22) list -> LIST OF list_term .
+    (26) statement -> NAME EQUAL data .
+    (12) math_Term -> data .
 
-    PLUS_SYMBOL     reduce using rule 22 (list -> LIST OF list_term .)
-    MINUS_SYMBOL    reduce using rule 22 (list -> LIST OF list_term .)
-    MULT_SYMBOL     reduce using rule 22 (list -> LIST OF list_term .)
-    DIV_SYMBOL      reduce using rule 22 (list -> LIST OF list_term .)
-    EXPO_SYMBOL     reduce using rule 22 (list -> LIST OF list_term .)
-    PLUS            reduce using rule 22 (list -> LIST OF list_term .)
-    MINUS           reduce using rule 22 (list -> LIST OF list_term .)
-    TIMES           reduce using rule 22 (list -> LIST OF list_term .)
-    BY              reduce using rule 22 (list -> LIST OF list_term .)
-    TO              reduce using rule 22 (list -> LIST OF list_term .)
-    COMMA           reduce using rule 22 (list -> LIST OF list_term .)
-    RBRACKET        reduce using rule 22 (list -> LIST OF list_term .)
-    RPAREN          reduce using rule 22 (list -> LIST OF list_term .)
-    $end            reduce using rule 22 (list -> LIST OF list_term .)
+  ! reduce/reduce conflict for PLUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MINUS_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for MULT_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for DIV_SYMBOL resolved using rule 12 (math_Term -> data .)
+  ! reduce/reduce conflict for EXPO_SYMBOL resolved using rule 12 (math_Term -> data .)
+    $end            reduce using rule 26 (statement -> NAME EQUAL data .)
+    PLUS            reduce using rule 26 (statement -> NAME EQUAL data .)
+    MINUS           reduce using rule 26 (statement -> NAME EQUAL data .)
+    TIMES           reduce using rule 26 (statement -> NAME EQUAL data .)
+    BY              reduce using rule 26 (statement -> NAME EQUAL data .)
+    TO              reduce using rule 26 (statement -> NAME EQUAL data .)
+    COMMA           reduce using rule 26 (statement -> NAME EQUAL data .)
+    RBRACKET        reduce using rule 26 (statement -> NAME EQUAL data .)
+    RPAREN          reduce using rule 26 (statement -> NAME EQUAL data .)
+    PLUS_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    MINUS_SYMBOL    reduce using rule 12 (math_Term -> data .)
+    MULT_SYMBOL     reduce using rule 12 (math_Term -> data .)
+    DIV_SYMBOL      reduce using rule 12 (math_Term -> data .)
+    EXPO_SYMBOL     reduce using rule 12 (math_Term -> data .)
+
+  ! PLUS_SYMBOL     [ reduce using rule 26 (statement -> NAME EQUAL data .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 26 (statement -> NAME EQUAL data .) ]
+  ! MULT_SYMBOL     [ reduce using rule 26 (statement -> NAME EQUAL data .) ]
+  ! DIV_SYMBOL      [ reduce using rule 26 (statement -> NAME EQUAL data .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 26 (statement -> NAME EQUAL data .) ]
 
 
 state 52
 
-    (23) list -> LBRACKET list_term RBRACKET .
+    (23) list -> LIST OF list_term .
 
-    PLUS_SYMBOL     reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    MINUS_SYMBOL    reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    MULT_SYMBOL     reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    DIV_SYMBOL      reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    EXPO_SYMBOL     reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    PLUS            reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    MINUS           reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    TIMES           reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    BY              reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    TO              reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    COMMA           reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    RBRACKET        reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    RPAREN          reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
-    $end            reduce using rule 23 (list -> LBRACKET list_term RBRACKET .)
+    PLUS_SYMBOL     reduce using rule 23 (list -> LIST OF list_term .)
+    MINUS_SYMBOL    reduce using rule 23 (list -> LIST OF list_term .)
+    MULT_SYMBOL     reduce using rule 23 (list -> LIST OF list_term .)
+    DIV_SYMBOL      reduce using rule 23 (list -> LIST OF list_term .)
+    EXPO_SYMBOL     reduce using rule 23 (list -> LIST OF list_term .)
+    PLUS            reduce using rule 23 (list -> LIST OF list_term .)
+    MINUS           reduce using rule 23 (list -> LIST OF list_term .)
+    TIMES           reduce using rule 23 (list -> LIST OF list_term .)
+    BY              reduce using rule 23 (list -> LIST OF list_term .)
+    TO              reduce using rule 23 (list -> LIST OF list_term .)
+    COMMA           reduce using rule 23 (list -> LIST OF list_term .)
+    RBRACKET        reduce using rule 23 (list -> LIST OF list_term .)
+    RPAREN          reduce using rule 23 (list -> LIST OF list_term .)
+    $end            reduce using rule 23 (list -> LIST OF list_term .)
 
 
 state 53
 
-    (21) list_term -> data COMMA . list_term
-    (20) list_term -> . data
-    (21) list_term -> . data COMMA list_term
-    (15) data -> . INT
-    (16) data -> . DOUBLE
-    (17) data -> . STRING
-    (18) data -> . list
-    (19) data -> . statement
-    (22) list -> . LIST OF list_term
-    (23) list -> . LBRACKET list_term RBRACKET
-    (1) statement -> . RECEIVE LPAREN data RPAREN
-    (2) statement -> . ADD data PLUS math_Term
-    (3) statement -> . data PLUS_SYMBOL math_Term
-    (4) statement -> . SUBSTRACT data MINUS math_Term
-    (5) statement -> . data MINUS_SYMBOL math_Term
-    (6) statement -> . MULTIPLY data TIMES math_Term
-    (7) statement -> . data MULT_SYMBOL math_Term
-    (8) statement -> . DIVIDE data BY math_Term
-    (9) statement -> . data DIV_SYMBOL math_Term
-    (10) statement -> . RAISE data TO math_Term
-    (11) statement -> . data EXPO_SYMBOL math_Term
-    (13) statement -> . SHOW LPAREN data RPAREN
-    (14) statement -> . SHOW LPAREN NAME RPAREN
-    (24) statement -> . NAME IS data
-    (25) statement -> . NAME EQUAL data
-    (26) statement -> . NAME
+    (24) list -> LBRACKET list_term RBRACKET .
 
-    INT             shift and go to state 11
-    DOUBLE          shift and go to state 12
-    STRING          shift and go to state 13
-    LIST            shift and go to state 15
-    LBRACKET        shift and go to state 16
-    RECEIVE         shift and go to state 2
-    ADD             shift and go to state 4
-    SUBSTRACT       shift and go to state 5
-    MULTIPLY        shift and go to state 6
-    DIVIDE          shift and go to state 7
-    RAISE           shift and go to state 8
-    SHOW            shift and go to state 9
-    NAME            shift and go to state 10
+    PLUS_SYMBOL     reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    MINUS_SYMBOL    reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    MULT_SYMBOL     reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    DIV_SYMBOL      reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    EXPO_SYMBOL     reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    PLUS            reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    MINUS           reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    TIMES           reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    BY              reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    TO              reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    COMMA           reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    RBRACKET        reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    RPAREN          reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
+    $end            reduce using rule 24 (list -> LBRACKET list_term RBRACKET .)
 
-    data                           shift and go to state 34
-    list_term                      shift and go to state 62
-    list                           shift and go to state 14
-    statement                      shift and go to state 24
 
 state 54
+
+    (22) list_term -> data COMMA . list_term
+    (21) list_term -> . data
+    (22) list_term -> . data COMMA list_term
+    (16) data -> . INT
+    (17) data -> . DOUBLE
+    (18) data -> . STRING
+    (19) data -> . list
+    (20) data -> . statement
+    (23) list -> . LIST OF list_term
+    (24) list -> . LBRACKET list_term RBRACKET
+    (1) statement -> . RECEIVE LPAREN data RPAREN
+    (2) statement -> . ADD math_Term PLUS math_Term
+    (3) statement -> . math_Term PLUS_SYMBOL math_Term
+    (4) statement -> . SUBSTRACT math_Term MINUS math_Term
+    (5) statement -> . math_Term MINUS_SYMBOL math_Term
+    (6) statement -> . MULTIPLY math_Term TIMES math_Term
+    (7) statement -> . math_Term MULT_SYMBOL math_Term
+    (8) statement -> . DIVIDE math_Term BY math_Term
+    (9) statement -> . math_Term DIV_SYMBOL math_Term
+    (10) statement -> . RAISE math_Term TO math_Term
+    (11) statement -> . math_Term EXPO_SYMBOL math_Term
+    (14) statement -> . SHOW LPAREN data RPAREN
+    (15) statement -> . SHOW LPAREN NAME RPAREN
+    (25) statement -> . NAME IS data
+    (26) statement -> . NAME EQUAL data
+    (27) statement -> . NAME
+    (12) math_Term -> . data
+    (13) math_Term -> . NAME
+
+    INT             shift and go to state 12
+    DOUBLE          shift and go to state 13
+    STRING          shift and go to state 14
+    LIST            shift and go to state 16
+    LBRACKET        shift and go to state 17
+    RECEIVE         shift and go to state 2
+    ADD             shift and go to state 4
+    SUBSTRACT       shift and go to state 6
+    MULTIPLY        shift and go to state 7
+    DIVIDE          shift and go to state 8
+    RAISE           shift and go to state 9
+    SHOW            shift and go to state 10
+    NAME            shift and go to state 11
+
+    data                           shift and go to state 36
+    list_term                      shift and go to state 63
+    list                           shift and go to state 15
+    statement                      shift and go to state 21
+    math_Term                      shift and go to state 5
+
+state 55
 
     (1) statement -> RECEIVE LPAREN data RPAREN .
 
@@ -1770,187 +1941,309 @@ state 54
     RPAREN          reduce using rule 1 (statement -> RECEIVE LPAREN data RPAREN .)
 
 
-state 55
-
-    (2) statement -> ADD data PLUS math_Term .
-
-    $end            reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    PLUS_SYMBOL     reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    MINUS_SYMBOL    reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    MULT_SYMBOL     reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    DIV_SYMBOL      reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    EXPO_SYMBOL     reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    PLUS            reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    MINUS           reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    TIMES           reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    BY              reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    TO              reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    COMMA           reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    RBRACKET        reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-    RPAREN          reduce using rule 2 (statement -> ADD data PLUS math_Term .)
-
-
 state 56
 
-    (4) statement -> SUBSTRACT data MINUS math_Term .
+    (2) statement -> ADD math_Term PLUS math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    PLUS_SYMBOL     reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    MINUS_SYMBOL    reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    MULT_SYMBOL     reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    DIV_SYMBOL      reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    EXPO_SYMBOL     reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    PLUS            reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    MINUS           reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    TIMES           reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    BY              reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    TO              reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    COMMA           reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    RBRACKET        reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
-    RPAREN          reduce using rule 4 (statement -> SUBSTRACT data MINUS math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    PLUS            reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    MINUS           reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    TIMES           reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    BY              reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    TO              reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    COMMA           reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    RBRACKET        reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    RPAREN          reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 2 (statement -> ADD math_Term PLUS math_Term .) ]
 
 
 state 57
 
-    (6) statement -> MULTIPLY data TIMES math_Term .
+    (4) statement -> SUBSTRACT math_Term MINUS math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    PLUS_SYMBOL     reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    MINUS_SYMBOL    reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    MULT_SYMBOL     reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    DIV_SYMBOL      reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    EXPO_SYMBOL     reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    PLUS            reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    MINUS           reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    TIMES           reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    BY              reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    TO              reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    COMMA           reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    RBRACKET        reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
-    RPAREN          reduce using rule 6 (statement -> MULTIPLY data TIMES math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    PLUS            reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    MINUS           reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    TIMES           reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    BY              reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    TO              reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    COMMA           reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    RBRACKET        reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    RPAREN          reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 4 (statement -> SUBSTRACT math_Term MINUS math_Term .) ]
 
 
 state 58
 
-    (8) statement -> DIVIDE data BY math_Term .
+    (6) statement -> MULTIPLY math_Term TIMES math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    PLUS_SYMBOL     reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    MINUS_SYMBOL    reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    MULT_SYMBOL     reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    DIV_SYMBOL      reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    EXPO_SYMBOL     reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    PLUS            reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    MINUS           reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    TIMES           reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    BY              reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    TO              reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    COMMA           reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    RBRACKET        reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
-    RPAREN          reduce using rule 8 (statement -> DIVIDE data BY math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    PLUS            reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    MINUS           reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    TIMES           reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    BY              reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    TO              reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    COMMA           reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    RBRACKET        reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    RPAREN          reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 6 (statement -> MULTIPLY math_Term TIMES math_Term .) ]
 
 
 state 59
 
-    (10) statement -> RAISE data TO math_Term .
+    (8) statement -> DIVIDE math_Term BY math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    PLUS_SYMBOL     reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    MINUS_SYMBOL    reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    MULT_SYMBOL     reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    DIV_SYMBOL      reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    EXPO_SYMBOL     reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    PLUS            reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    MINUS           reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    TIMES           reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    BY              reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    TO              reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    COMMA           reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    RBRACKET        reduce using rule 10 (statement -> RAISE data TO math_Term .)
-    RPAREN          reduce using rule 10 (statement -> RAISE data TO math_Term .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    PLUS            reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    MINUS           reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    TIMES           reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    BY              reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    TO              reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    COMMA           reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    RBRACKET        reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    RPAREN          reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 8 (statement -> DIVIDE math_Term BY math_Term .) ]
 
 
 state 60
 
-    (13) statement -> SHOW LPAREN data RPAREN .
+    (10) statement -> RAISE math_Term TO math_Term .
+    (3) statement -> math_Term . PLUS_SYMBOL math_Term
+    (5) statement -> math_Term . MINUS_SYMBOL math_Term
+    (7) statement -> math_Term . MULT_SYMBOL math_Term
+    (9) statement -> math_Term . DIV_SYMBOL math_Term
+    (11) statement -> math_Term . EXPO_SYMBOL math_Term
 
-    $end            reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    PLUS_SYMBOL     reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    MINUS_SYMBOL    reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    MULT_SYMBOL     reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    DIV_SYMBOL      reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    EXPO_SYMBOL     reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    PLUS            reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    MINUS           reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    TIMES           reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    BY              reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    TO              reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    COMMA           reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    RBRACKET        reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
-    RPAREN          reduce using rule 13 (statement -> SHOW LPAREN data RPAREN .)
+  ! shift/reduce conflict for PLUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MINUS_SYMBOL resolved as shift
+  ! shift/reduce conflict for MULT_SYMBOL resolved as shift
+  ! shift/reduce conflict for DIV_SYMBOL resolved as shift
+  ! shift/reduce conflict for EXPO_SYMBOL resolved as shift
+    $end            reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    PLUS            reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    MINUS           reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    TIMES           reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    BY              reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    TO              reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    COMMA           reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    RBRACKET        reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    RPAREN          reduce using rule 10 (statement -> RAISE math_Term TO math_Term .)
+    PLUS_SYMBOL     shift and go to state 22
+    MINUS_SYMBOL    shift and go to state 23
+    MULT_SYMBOL     shift and go to state 24
+    DIV_SYMBOL      shift and go to state 25
+    EXPO_SYMBOL     shift and go to state 26
+
+  ! PLUS_SYMBOL     [ reduce using rule 10 (statement -> RAISE math_Term TO math_Term .) ]
+  ! MINUS_SYMBOL    [ reduce using rule 10 (statement -> RAISE math_Term TO math_Term .) ]
+  ! MULT_SYMBOL     [ reduce using rule 10 (statement -> RAISE math_Term TO math_Term .) ]
+  ! DIV_SYMBOL      [ reduce using rule 10 (statement -> RAISE math_Term TO math_Term .) ]
+  ! EXPO_SYMBOL     [ reduce using rule 10 (statement -> RAISE math_Term TO math_Term .) ]
 
 
 state 61
 
-    (14) statement -> SHOW LPAREN NAME RPAREN .
+    (14) statement -> SHOW LPAREN data RPAREN .
 
-    $end            reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    PLUS_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    MINUS_SYMBOL    reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    MULT_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    DIV_SYMBOL      reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    EXPO_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    PLUS            reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    MINUS           reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    TIMES           reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    BY              reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    TO              reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    COMMA           reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    RBRACKET        reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
-    RPAREN          reduce using rule 14 (statement -> SHOW LPAREN NAME RPAREN .)
+    $end            reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    PLUS_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    MINUS_SYMBOL    reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    MULT_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    DIV_SYMBOL      reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    EXPO_SYMBOL     reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    PLUS            reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    MINUS           reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    TIMES           reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    BY              reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    TO              reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    COMMA           reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    RBRACKET        reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
+    RPAREN          reduce using rule 14 (statement -> SHOW LPAREN data RPAREN .)
 
 
 state 62
 
-    (21) list_term -> data COMMA list_term .
+    (15) statement -> SHOW LPAREN NAME RPAREN .
 
-    RBRACKET        reduce using rule 21 (list_term -> data COMMA list_term .)
-    $end            reduce using rule 21 (list_term -> data COMMA list_term .)
-    PLUS_SYMBOL     reduce using rule 21 (list_term -> data COMMA list_term .)
-    MINUS_SYMBOL    reduce using rule 21 (list_term -> data COMMA list_term .)
-    MULT_SYMBOL     reduce using rule 21 (list_term -> data COMMA list_term .)
-    DIV_SYMBOL      reduce using rule 21 (list_term -> data COMMA list_term .)
-    EXPO_SYMBOL     reduce using rule 21 (list_term -> data COMMA list_term .)
-    PLUS            reduce using rule 21 (list_term -> data COMMA list_term .)
-    MINUS           reduce using rule 21 (list_term -> data COMMA list_term .)
-    TIMES           reduce using rule 21 (list_term -> data COMMA list_term .)
-    BY              reduce using rule 21 (list_term -> data COMMA list_term .)
-    TO              reduce using rule 21 (list_term -> data COMMA list_term .)
-    COMMA           reduce using rule 21 (list_term -> data COMMA list_term .)
-    RPAREN          reduce using rule 21 (list_term -> data COMMA list_term .)
+    $end            reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    PLUS_SYMBOL     reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    MINUS_SYMBOL    reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    MULT_SYMBOL     reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    DIV_SYMBOL      reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    EXPO_SYMBOL     reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    PLUS            reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    MINUS           reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    TIMES           reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    BY              reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    TO              reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    COMMA           reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    RBRACKET        reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+    RPAREN          reduce using rule 15 (statement -> SHOW LPAREN NAME RPAREN .)
+
+
+state 63
+
+    (22) list_term -> data COMMA list_term .
+
+    RBRACKET        reduce using rule 22 (list_term -> data COMMA list_term .)
+    PLUS_SYMBOL     reduce using rule 22 (list_term -> data COMMA list_term .)
+    MINUS_SYMBOL    reduce using rule 22 (list_term -> data COMMA list_term .)
+    MULT_SYMBOL     reduce using rule 22 (list_term -> data COMMA list_term .)
+    DIV_SYMBOL      reduce using rule 22 (list_term -> data COMMA list_term .)
+    EXPO_SYMBOL     reduce using rule 22 (list_term -> data COMMA list_term .)
+    $end            reduce using rule 22 (list_term -> data COMMA list_term .)
+    PLUS            reduce using rule 22 (list_term -> data COMMA list_term .)
+    MINUS           reduce using rule 22 (list_term -> data COMMA list_term .)
+    TIMES           reduce using rule 22 (list_term -> data COMMA list_term .)
+    BY              reduce using rule 22 (list_term -> data COMMA list_term .)
+    TO              reduce using rule 22 (list_term -> data COMMA list_term .)
+    COMMA           reduce using rule 22 (list_term -> data COMMA list_term .)
+    RPAREN          reduce using rule 22 (list_term -> data COMMA list_term .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for COMMA in state 34 resolved as shift
-WARNING: shift/reduce conflict for PLUS_SYMBOL in state 34 resolved as shift
-WARNING: shift/reduce conflict for MINUS_SYMBOL in state 34 resolved as shift
-WARNING: shift/reduce conflict for MULT_SYMBOL in state 34 resolved as shift
-WARNING: shift/reduce conflict for DIV_SYMBOL in state 34 resolved as shift
-WARNING: shift/reduce conflict for EXPO_SYMBOL in state 34 resolved as shift
-WARNING: shift/reduce conflict for PLUS_SYMBOL in state 36 resolved as shift
-WARNING: shift/reduce conflict for MINUS_SYMBOL in state 36 resolved as shift
-WARNING: shift/reduce conflict for MULT_SYMBOL in state 36 resolved as shift
-WARNING: shift/reduce conflict for DIV_SYMBOL in state 36 resolved as shift
-WARNING: shift/reduce conflict for EXPO_SYMBOL in state 36 resolved as shift
-WARNING: shift/reduce conflict for RPAREN in state 48 resolved as shift
-WARNING: shift/reduce conflict for PLUS_SYMBOL in state 49 resolved as shift
-WARNING: shift/reduce conflict for MINUS_SYMBOL in state 49 resolved as shift
-WARNING: shift/reduce conflict for MULT_SYMBOL in state 49 resolved as shift
-WARNING: shift/reduce conflict for DIV_SYMBOL in state 49 resolved as shift
-WARNING: shift/reduce conflict for EXPO_SYMBOL in state 49 resolved as shift
-WARNING: shift/reduce conflict for PLUS_SYMBOL in state 50 resolved as shift
-WARNING: shift/reduce conflict for MINUS_SYMBOL in state 50 resolved as shift
-WARNING: shift/reduce conflict for MULT_SYMBOL in state 50 resolved as shift
-WARNING: shift/reduce conflict for DIV_SYMBOL in state 50 resolved as shift
-WARNING: shift/reduce conflict for EXPO_SYMBOL in state 50 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 36 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 39 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 39 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 39 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 39 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 40 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 40 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 40 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 41 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 41 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 41 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 41 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 41 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 42 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 42 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 42 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 42 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 42 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 43 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 43 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 43 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 43 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 43 resolved as shift
+WARNING: shift/reduce conflict for RPAREN in state 49 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 56 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 56 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 56 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 56 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 56 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 57 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 57 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 57 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 57 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 57 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 58 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 58 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 58 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 58 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 58 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for PLUS_SYMBOL in state 60 resolved as shift
+WARNING: shift/reduce conflict for MINUS_SYMBOL in state 60 resolved as shift
+WARNING: shift/reduce conflict for MULT_SYMBOL in state 60 resolved as shift
+WARNING: shift/reduce conflict for DIV_SYMBOL in state 60 resolved as shift
+WARNING: shift/reduce conflict for EXPO_SYMBOL in state 60 resolved as shift
+WARNING: reduce/reduce conflict in state 11 resolved using rule (math_Term -> NAME)
+WARNING: rejected rule (statement -> NAME) in state 11
+WARNING: reduce/reduce conflict in state 20 resolved using rule (math_Term -> NAME)
+WARNING: rejected rule (statement -> NAME) in state 20
+WARNING: reduce/reduce conflict in state 36 resolved using rule (math_Term -> data)
+WARNING: rejected rule (list_term -> data) in state 36
+WARNING: reduce/reduce conflict in state 49 resolved using rule (math_Term -> NAME)
+WARNING: rejected rule (statement -> NAME) in state 49
+WARNING: reduce/reduce conflict in state 50 resolved using rule (math_Term -> data)
+WARNING: rejected rule (statement -> NAME IS data) in state 50
+WARNING: reduce/reduce conflict in state 51 resolved using rule (math_Term -> data)
+WARNING: rejected rule (statement -> NAME EQUAL data) in state 51

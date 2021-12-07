@@ -70,8 +70,8 @@ def p_receive(p):
   return p
 
 def p_addition(p):
-  '''statement : ADD data PLUS math_Term
-               | data PLUS_SYMBOL math_Term'''
+  '''statement : ADD math_Term PLUS math_Term
+               | math_Term PLUS_SYMBOL math_Term'''
   try:
     if p.slice[2].value =='+':
       value = p.slice[1].value + p.slice[3].value
@@ -83,8 +83,8 @@ def p_addition(p):
     raise("Invalid addition method between data types")
 
 def p_substraction(p):
-  '''statement : SUBSTRACT data MINUS math_Term
-               | data MINUS_SYMBOL math_Term'''
+  '''statement : SUBSTRACT math_Term MINUS math_Term
+               | math_Term MINUS_SYMBOL math_Term'''
   try:
     if p.slice[2].value =='-':
       value = p.slice[1].value - p.slice[3].value
@@ -96,8 +96,8 @@ def p_substraction(p):
     raise("Invalid substraction method between data types")
 
 def p_multiplcation(p):
-  '''statement : MULTIPLY data TIMES math_Term
-               | data MULT_SYMBOL math_Term'''
+  '''statement : MULTIPLY math_Term TIMES math_Term
+               | math_Term MULT_SYMBOL math_Term'''
   try:
     if p.slice[2].value =='*':
       value = p.slice[1].value * p.slice[3].value
@@ -109,8 +109,8 @@ def p_multiplcation(p):
     raise("Invalid multiplication method between data types")
 
 def p_division(p):
-  '''statement : DIVIDE data BY math_Term
-               | data DIV_SYMBOL math_Term'''
+  '''statement : DIVIDE math_Term BY math_Term
+               | math_Term DIV_SYMBOL math_Term'''
   try:
     if p.slice[2].value =='/':
       value = p.slice[1].value / p.slice[3].value
@@ -122,8 +122,8 @@ def p_division(p):
     raise("Invalid division method between data types")
 
 def p_exponent(p):
-  '''statement : RAISE data TO math_Term
-               | data EXPO_SYMBOL math_Term'''
+  '''statement : RAISE math_Term TO math_Term
+               | math_Term EXPO_SYMBOL math_Term'''
   try:
     if p.slice[2].value =='**':
       value = p.slice[1].value ** p.slice[3].value
@@ -135,8 +135,12 @@ def p_exponent(p):
     raise("Invalid division method between data types")
 
 def p_math_Term(p):
-  '''math_Term : data'''
-  p[0]=p[1]
+  '''math_Term : data
+               | NAME'''
+  if p.slice[1].type=='NAME':
+    p[0]=Variables[p.slice[1].value]
+  else:
+    p[0]=p[1]
   return p
 
 
