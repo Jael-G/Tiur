@@ -1,19 +1,18 @@
+![Tiur logo](image-link)
 # Tiur
-A simple programming language made using python PLY for the final project of CIIC4030.
-Made by Jael Gonzalez
+Tiur (or Tir) is the god of written language, schooling and wisdom worshipped in ancient Armenia.
+This language made using Python's PLY seeks to make programming more similar written language and easier to learn, therefore following what the Tiur god stands for.
+The logo is a representation of the Armenian eternity sign, a symbol that is part of the nation identity of the Armenian people and commonly seen on walls of churches.
+
 ## Usage
 
 To run a tiur script:
 
     python tiur.py [file_path]
 
+The following to be executed most be of .tiur extension
 
 
-
-
-## Mision
-
-Tiur was made for beginners who do not have a grasp of programming languages. It presents a very simple and readable format.
 
 #### Example code:
 
@@ -37,6 +36,12 @@ show(d)
 
 #Nesting receive withing show
 show(receive("Indicate what you want printed: "))
+
+#Math operations
+show(1+4)
+show([1,2,3,4] + [5,6,7])
+
+#There is much more
 ```
 #### Output
 
@@ -49,4 +54,6 @@ show(receive("Indicate what you want printed: "))
 12
 "Indicate what you want printed:" 2
 2
+5
+[1,2,3,4,5,6,7]
 ```
