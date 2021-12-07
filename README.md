@@ -1,8 +1,8 @@
 ![Tiur logo](https://github.com/Jael-G/Tiur/blob/main/tiur.jpg)
 # Tiur
 Tiur (or Tir) is the god of written language, schooling and wisdom worshipped in ancient Armenia.
-This language made using Python's PLY seeks to make programming more similar written language and easier to learn, therefore following what the Tiur god stands for.
-The logo is a representation of the Armenian eternity sign, a symbol that is part of the nation identity of the Armenian people and commonly seen on walls of churches.
+This language made using Python's PLY seeks to make programming more similar to written language and easier to learn, therefore following what the Tiur god stands for.
+The logo is a representation of the Armenian eternity sign, a symbol that is part of the national identity of the Armenian people and commonly seen on walls of churches.
 
 ## Usage
 
