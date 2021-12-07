@@ -65,7 +65,8 @@ Variables = {}
 
 def p_receive(p):
   '''statement : RECEIVE LPAREN data RPAREN'''
-  value = input(f"{(p.slice[3].value)}")
+  string = p.slice[3].value.replace('"','')
+  value = input(f"{string}")
   p[0] = value
   return p
 
@@ -150,9 +151,14 @@ def p_show(p):
   '''statement : SHOW LPAREN data RPAREN
   |  SHOW LPAREN NAME RPAREN'''
   if p.slice[3].type == 'NAME':
-    print(Variables[p.slice[3].value])
+    value =Variables[p.slice[3].value]
   else:
-    print(p.slice[3].value)
+    value = p.slice[3].value
+
+  if type(value)==str:
+      value = value.replace('"', '')
+  
+  print(value)
 
 def p_data(p):
   '''data : INT
@@ -208,6 +214,10 @@ if len(sys.argv)==1:
 
 file_path = sys.argv[1]
 
+if file_path[-5::]!='.tiur':
+  print("Invalid file format. Must be of .tiur extension")
+  quit()
+
 with open(file_path,'r') as file:
   code = file.read().splitlines()
 
@@ -219,3 +229,6 @@ for line in code:
   except EOFError:
     break
   yacc.parse(s)
+
+
+  print(Variables)

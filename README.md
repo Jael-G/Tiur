@@ -10,7 +10,7 @@ To run a tiur script:
 
     python tiur.py [file_path]
 
-The following to be executed most be of .tiur extension
+The file to be executed most be of .tiur extension
 
 
 
