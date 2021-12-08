@@ -1,0 +1,23 @@
+first_value is receive("First value: ")
+second_value is receive("Second value: ")
+
+show("Indicate an option: ")
+show("a)Sum")
+show("b)Substraction")
+show("c)Multiplication")
+show("d)Division")
+option is receive("Option number: ")
+
+result is 0
+
+if option equal_to "a" then
+    show(to_int(first_value) + to_int(second_value))
+
+if option equal_to "b" then
+    show(to_int(first_value) - to_int(second_value))
+
+if option equal_to "c" then
+    show(to_int(first_value) * to_int(second_value))
+
+if option equal_to "d" then
+    show(to_int(first_value) / to_int(second_value))

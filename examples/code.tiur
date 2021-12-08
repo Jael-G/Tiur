@@ -1,1 +1,27 @@
-#TO BE DONE, FOR NOW ONLY USED FOR TESTING
+# <- Comentarios
+
+
+#Motivacion:
+#Crear un codigo acesible para principiantes usando language escrito
+#En otras palabras, asi como se lee el codigo, se entiendo lo que esta siendo
+
+#Github repo: https://github.com/Jael-G/Tiur
+
+# Tipo de data INT, FLOAT, STRING, LIST
+#Creacion de variables
+#Demostracion de valores
+#Recivir valores
+#Matematica de data
+#Operaciones logicas
+#If statements
+
+a is 12
+b = 123.456
+c is "Hello World!"
+d is list of 1,2,3
+e is [1,2,3]
+
+if 1 equal_to 1 then
+    a is "Hello World"
+
+show(a)
