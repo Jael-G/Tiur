@@ -21,6 +21,13 @@ reserved = {
   'by':'BY',
   'raise':'RAISE',
   'to':'TO',
+  'if':'IF',
+  'equal_to' : 'EQUAL_TO',
+  'more_than' : 'MORE_THAN',
+  'less_than' : 'LESS_THAN',
+  'more_or_equal' : 'MORE_OR_EQUAL',
+  'less_or_equal' : 'LESS_OR_EQUAL',
+  'not_equal' : 'NOT_EQUAL'
 }
 
 tokens = ['EQUAL', 'LPAREN','RPAREN','LBRACKET', 'RBRACKET', 'COMMA', 'STRING', 'NAME', 'DOUBLE', 'INT', 'MULT_SYMBOL','DIV_SYMBOL', 'PLUS_SYMBOL','MINUS_SYMBOL','EXPO_SYMBOL'] + list(reserved.values())
@@ -144,7 +151,38 @@ def p_math_Term(p):
     p[0]=p[1]
   return p
 
+def p_if_expression(p):
+  '''statement : data EQUAL_TO data
+               | data MORE_THAN data
+               | data LESS_THAN data
+               | data MORE_OR_EQUAL data
+               | data LESS_OR_EQUAL data
+               | data NOT_EQUAL data'''
 
+  operator = p.slice[2].value
+  value1 = p.slice[1].value
+  value2 = p.slice[3].value
+  if operator == 'equal_to':
+    p[0] = value1 == value2
+  elif operator == 'more_than':
+    p[0] = value1 > value2
+  elif operator == 'less_than':
+    p[0] = value1 < value2
+  elif operator == 'more_or_equal':
+    p[0] = value1 >= value2
+  elif operator == 'less_or_equal':
+    p[0] = value1 <= value2
+  elif operator == 'not_equal':
+    p[0] = value1 != value2
+  else:
+    raise("Invalid logical operation")
+
+  # 'equal_to' : 'EQUAL_TO',
+  # 'more_than' : 'MORE_THAN',
+  # 'less_than' : 'LESS_THAN',
+  # 'more_or_equal' : 'MORE_OR_EQUAL',
+  # 'less_or_equal' : 'LESS_OR_EQUAL',
+  # 'not_equal' : 'NOT_EQUAL'
 
 
 def p_show(p):
@@ -229,6 +267,3 @@ for line in code:
   except EOFError:
     break
   yacc.parse(s)
-
-
-  print(Variables)
